@@ -1,0 +1,20 @@
+﻿@font-face {
+  font-family: "C64 Pro Mono Local";
+  src: url("../fonts/C64_Pro_Mono-STYLE.ttf") format("truetype");
+}
+@font-face {
+  font-family: "C64 Pro Local";
+  src: url("../fonts/C64_Pro-STYLE.ttf") format("truetype");
+}
+body {
+  font-family: "C64 Pro Mono Local";
+  background: black;
+  color: #00C43A;
+}
+body header {
+  text-align: center;
+  padding: 80px 0;
+}
+body h3 {
+  padding: 20px 0;
+}
