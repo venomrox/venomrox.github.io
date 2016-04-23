@@ -18,3 +18,11 @@ body header {
 body h3 {
   padding: 20px 0;
 }
+@media (max-width: 600px) {
+  header img {
+    max-width: 300px;
+  }
+  header h3 {
+    font-size: 14px;
+  }
+}

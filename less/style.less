@@ -24,8 +24,6 @@ body {
 
     header {
       
-
-        
         text-align: center;
         padding: (4 * @padding) 0;
        
@@ -34,3 +32,10 @@ body {
     h3 { padding: @padding 0}
 }
 
+@media (max-width: 600px) {
+
+    header {
+        img { max-width: 300px; }
+        h3 { font-size: 14px; }
+    }
+}
