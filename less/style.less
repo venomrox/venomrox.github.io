@@ -1,12 +1,12 @@
 ﻿@font-face {
-	 font-family: "C64 Pro Mono Local";
-	 src: url("../fonts/C64_Pro_Mono-STYLE.ttf") format("truetype");
+    font-family: "C64 Pro Mono Local";
+    src: url("../fonts/C64_Pro_Mono-STYLE.ttf") format("truetype");
 }
 
 
 @font-face {
-	 font-family: "C64 Pro Local";
-	 src: url("../fonts/C64_Pro-STYLE.ttf") format("truetype");
+    font-family: "C64 Pro Local";
+    src: url("../fonts/C64_Pro-STYLE.ttf") format("truetype");
 }
 
 @font-main: "C64 Pro Mono Local";
@@ -14,28 +14,64 @@
 @color: #00C43A;
 @padding: 20px;
 @logo-width: 400px;
+@mobile-break: 600px;
+@mobile-scale: 0.75;
 
+@-moz-keyframes blink { from, to { color: @color } 50% { color: @background } }
+@-webkit-keyframes blink { from, to { color: @color } 50% { color: @background } }
+@keyframes blink { from, to { color: @color } 50% { color: @background } }
+.blink() {
+    @blink-rate: 1.2s;
+    -webkit-animation: @blink-rate blink step-end infinite;
+    -moz-animation: @blink-rate blink step-end infinite;
+    -o-animation: @blink-rate blink step-end infinite;
+    animation: @blink-rate blink step-end infinite;
+}
 
 body {
     font-family: @font-main;
     background: @background;
-
     color: @color;
 
     header {
-      
         text-align: center;
         padding: (4 * @padding) 0;
-       
-    }
 
-    h3 { padding: @padding 0}
+        h3 {
+            margin: 0 auto;
+            padding: @padding 0;
+            width: @logo-width + 80;
+            //font-size: 14px;
+            text-align: left;
+
+            b {
+                margin-left: 3px;
+                .blink();
+            }
+            span {
+
+                &:nth-child(2) {
+                    color: @background;
+                }
+
+            }
+        }
+    }
 }
 
-@media (max-width: 600px) {
+@media (max-width: @mobile-break) {
 
-    header {
-        img { max-width: 300px; }
-        h3 { font-size: 14px; }
+    body {
+        header {
+            img {
+                max-width: @logo-width * @mobile-scale;
+            }
+
+            h3 {
+                padding-left: 6px;
+                width: (@logo-width * @mobile-scale) + 50;
+                font-size: 13px;
+            }
+        }
     }
 }
