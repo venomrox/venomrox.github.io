@@ -22,6 +22,10 @@ var Venom;
         function TerminalWriter(element) {
             this.element = element;
         }
+        TerminalWriter.prototype.write = function (text) {
+            this.text = text;
+            this.run();
+        };
         TerminalWriter.prototype.init = function () {
             //debugger;
             this.text = this.element.innerHTML;
@@ -29,6 +33,9 @@ var Venom;
             this.cursor = document.createElement("b");
             this.cursor.innerHTML = "_";
             this.element.appendChild(this.cursor.cloneNode(true));
+            this.run();
+        };
+        TerminalWriter.prototype.run = function () {
             for (var i = 0, ii = this.text.length; i != ii; ++i) {
                 var timeout = (i + 1) * TerminalWriter.refreshRate;
                 window.setTimeout(this.render.bind(this, i, ii), timeout);
@@ -44,10 +51,14 @@ var Venom;
             //debugger; 
             var elements = document.querySelectorAll(TerminalWriter.selector);
             for (var i = 0, ii = elements.length; i != ii; ++i) {
-                var writer = new TerminalWriter(elements[i]);
-                TerminalWriter.instances.push(writer);
-                writer.init();
+                TerminalWriter.Create(elements[i]);
             }
+        };
+        TerminalWriter.Create = function (element) {
+            var writer = new TerminalWriter(element);
+            TerminalWriter.instances.push(writer);
+            writer.init();
+            return writer;
         };
         TerminalWriter.refreshRate = 40;
         TerminalWriter.selector = ".terminal-writer";
@@ -60,14 +71,18 @@ var Venom;
         }
         MainPage.Init = function () {
             document.querySelector("header").classList.add("fade-in");
-            TerminalWriter.InitAll();
+            MainPage.headerWriter = TerminalWriter.Create(document.querySelector('header h3'));
             document.onclick = MainPage.anyKey;
             document.onkeyup = MainPage.anyKey;
         };
         MainPage.anyKey = function () {
             document.querySelector('header').classList.add('fall');
-            document.querySelector('header h3').classList.add('hidden');
-            document.querySelector('content').classList.remove('hidden');
+            // document.querySelector('header h3').classList.add('hidden');
+            // document.querySelector('content').classList.remove('hidden');
+            window.setTimeout(MainPage.levelOne, 1000);
+        };
+        MainPage.levelOne = function () {
+            MainPage.headerWriter.write("Coming soon");
         };
         return MainPage;
     }());

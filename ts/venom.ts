@@ -48,6 +48,12 @@
 
         constructor(element: HTMLElement) { this.element = element; }
 
+        public write(text: string) {
+            
+            this.text = text;
+            this.run();
+        }
+
         protected init() {
 
             //debugger;
@@ -58,6 +64,11 @@
             this.cursor = <HTMLElement>document.createElement("b");
             this.cursor.innerHTML = "_";
             this.element.appendChild(this.cursor.cloneNode(true));
+
+            this.run();
+        }
+
+        protected run() {
 
             for (var i = 0, ii = this.text.length; i != ii; ++i) {
 
@@ -81,31 +92,46 @@
             var elements = document.querySelectorAll(TerminalWriter.selector);
             for (var i = 0, ii = elements.length; i != ii; ++i) {
 
-                var writer = new TerminalWriter(<HTMLElement>elements[i]);
-                TerminalWriter.instances.push(writer);
-
-                writer.init();
+                TerminalWriter.Create(<HTMLElement>elements[i);
             }
+        }
+
+        public static Create(element: HTMLElement): TerminalWriter {
+
+            var writer = new TerminalWriter(element);
+            TerminalWriter.instances.push(writer);
+
+            writer.init();
+            return writer;
         }
     }
 
     export class MainPage {
 
+        public static headerWriter: TerminalWriter;
+
         public static Init(): void {
 
             document.querySelector("header").classList.add("fade-in");
-            TerminalWriter.InitAll();
+            MainPage.headerWriter = TerminalWriter.Create(<HTMLElement>document.querySelector('header h3'));
 
             document.onclick = MainPage.anyKey;
             document.onkeyup = MainPage.anyKey;
-            
+
         }
 
         private static anyKey(): void {
             
             document.querySelector('header').classList.add('fall');
-            document.querySelector('header h3').classList.add('hidden');
-            document.querySelector('content').classList.remove('hidden');
+            // document.querySelector('header h3').classList.add('hidden');
+            // document.querySelector('content').classList.remove('hidden');
+
+            window.setTimeout(MainPage.levelOne, 1000);
+        }
+
+        private static levelOne(): void {
+
+            MainPage.headerWriter.write("Coming soon");
         }
     }
 }
