@@ -30,17 +30,33 @@
 			<img src="./images/logo-small.png" />
 		</h2>
 		<span>
-			<button>Home</button>
-			<button>Photos</button>
-			<button>Games</button>
-			<button>Gear</button>
+			<button nav="home">Home</button>
+			<button nav="photos">Photos</button>
+			<button nav="games">Games</button>
+			<button nav="gear">Gear</button>
 
 		</span>
 	</nav>
 
-	<div class="content hidden">
-		Wassup
+	<div route="home" class="content hidden">
+		About Venom
+		[coming soon]
     </div>
+
+	<div route="photos" class="content hidden">
+		Photos
+		[coming soon]
+	</div>
+
+	<div route="games" class="content hidden">
+		Games
+		[coming soon]
+	</div>
+
+	<div route="gear" class="content hidden">
+		Venom Gear
+		[coming soon]
+	</div>
     
     <script src="./ts/venom.js"></script>
 	<script type="text/javascript">Venom.MainPage.Init()</script>

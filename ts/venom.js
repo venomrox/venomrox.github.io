@@ -66,14 +66,51 @@ var Venom;
         return TerminalWriter;
     }());
     Venom.TerminalWriter = TerminalWriter;
+    var NavBar = (function () {
+        function NavBar(element) {
+            this.element = element;
+            this.buttons = Array.prototype.slice.call(element.querySelectorAll('button'));
+            for (var i = 0, ii = this.buttons.length; i != ii; ++i) {
+                this.buttons[i].onclick = this.onClick.bind(this, this.buttons[i]);
+            }
+        }
+        NavBar.prototype.onClick = function (button) {
+            for (var i = 0, ii = this.buttons.length; i != ii; ++i) {
+                this.buttons[i].classList.remove('selected');
+            }
+            button.classList.add('selected');
+            this.route(button.dataset['nav']);
+        };
+        NavBar.prototype.show = function () { this.element.classList.remove('hidden'); };
+        NavBar.prototype.hide = function () { this.element.classList.add('hidden'); };
+        NavBar.prototype.route = function (path) {
+            for (var i = 0, ii = this.buttons.length; i != ii; ++i) {
+                var div = this.buttons[i];
+                var fn = (div.getAttribute('nav') === path)
+                    ? 'add'
+                    : 'remove';
+                this.buttons[i].classList[fn]('selected');
+            }
+            var divs = document.querySelectorAll('.content');
+            for (var i = 0, ii = divs.length; i != ii; ++i) {
+                var div = divs[i];
+                div.classList.add('hidden');
+            }
+            var content = document.querySelector('.content[route=' + path + ']');
+            content.classList.remove('hidden');
+        };
+        return NavBar;
+    }());
+    Venom.NavBar = NavBar;
     var MainPage = (function () {
         function MainPage() {
         }
         MainPage.Init = function () {
-            document.querySelector("header").classList.add("fade-in");
+            document.querySelector("header").classList.add('fade-in');
             MainPage.headerWriter = TerminalWriter.Create(document.querySelector('header h3'));
             document.onclick = MainPage.anyKey;
             document.onkeyup = MainPage.anyKey;
+            MainPage.navbar = new NavBar(document.querySelector('nav'));
         };
         MainPage.anyKey = function () {
             document.querySelector('header').classList.add('fall');
@@ -82,9 +119,11 @@ var Venom;
             window.setTimeout(MainPage.levelOne, 1000);
         };
         MainPage.levelOne = function () {
+            // Reset AnyKey
+            MainPage.anyKey = function () { };
             document.querySelector('header').classList.add('hidden');
-            document.querySelector('nav').classList.remove('hidden');
-            document.querySelector('content').classList.remove('hidden');
+            MainPage.navbar.route('home');
+            MainPage.navbar.show();
         };
         return MainPage;
     }());

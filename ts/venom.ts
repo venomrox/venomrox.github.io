@@ -106,18 +106,76 @@
         }
     }
 
+    export class NavBar {
+
+        private element: HTMLElement;
+
+        private buttons: Array<HTMLElement>;
+
+        constructor(element: HTMLElement) {
+
+            this.element = element;
+            this.buttons = Array.prototype.slice.call(element.querySelectorAll('button'));
+
+            for (var i = 0, ii = this.buttons.length; i != ii; ++i) {
+                this.buttons[i].onclick = this.onClick.bind(this, this.buttons[i]);
+            }
+        }
+        
+        private onClick(button: HTMLElement) {
+
+            for (var i = 0, ii = this.buttons.length; i != ii; ++i) {
+                this.buttons[i].classList.remove('selected');
+            }
+
+            button.classList.add('selected');
+            this.route(button.dataset['nav']);
+        }
+
+        public show() { this.element.classList.remove('hidden'); }
+        public hide() { this.element.classList.add('hidden'); }
+        
+        public route(path: string) {
+
+            for (var i = 0, ii = this.buttons.length; i != ii; ++i) {
+                     
+                var div = <HTMLElement>this.buttons[i];
+                var fn = (div.getAttribute('nav') === path)
+                    ? 'add'
+                    : 'remove';
+                    
+                this.buttons[i].classList[fn]('selected');
+            
+            }
+
+            var divs = document.querySelectorAll('.content');
+            for (var i = 0, ii = divs.length; i != ii; ++i) {
+
+                var div = <HTMLElement>divs[i];
+                div.classList.add('hidden');
+                
+            }
+
+            var content = document.querySelector('.content[route=' + path + ']');
+            content.classList.remove('hidden');
+        }
+    }
+
     export class MainPage {
 
         public static headerWriter: TerminalWriter;
 
+        public static navbar: NavBar;
+
         public static Init(): void {
 
-            document.querySelector("header").classList.add("fade-in");
+            document.querySelector("header").classList.add('fade-in');
             MainPage.headerWriter = TerminalWriter.Create(<HTMLElement>document.querySelector('header h3'));
 
             document.onclick = MainPage.anyKey;
             document.onkeyup = MainPage.anyKey;
 
+            MainPage.navbar = new NavBar(<HTMLElement>document.querySelector('nav'));
         }
 
         private static anyKey(): void {
@@ -131,9 +189,13 @@
 
         private static levelOne(): void {
 
+            // Reset AnyKey
+            MainPage.anyKey = () => { }
+
             document.querySelector('header').classList.add('hidden');
-            document.querySelector('nav').classList.remove('hidden');
-            document.querySelector('content').classList.remove('hidden');
+
+            MainPage.navbar.route('home');
+            MainPage.navbar.show();
         }
     }
 }

@@ -183,7 +183,7 @@ body header h3 span:nth-child(2) {
 }
 body nav {
   min-height: 100px;
-  width: 900px;
+  width: 800px;
   margin: 0 auto;
   padding: 20px 0;
 }
@@ -203,11 +203,22 @@ body nav button {
   text-transform: uppercase;
   box-shadow: none;
 }
-body .content {
-  max-width: 900px;
-  margin: 0 auto;
+body nav button.selected {
+  border-color: #00912b;
+  color: #00912b;
 }
-@media (max-width: 600px) {
+body .content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px;
+}
+@media (max-width: 800px) {
+  body {
+    font-size: 13px;
+  }
+  body header h1 {
+    width: 300px;
+  }
   body header img {
     max-width: 300px;
   }
@@ -229,8 +240,15 @@ body .content {
     display: flex;
     margin: 0 auto;
     position: relative;
+    margin-bottom: 40px;
   }
   body nav button {
     flex-grow: 1;
+    padding: 16px;
+    font-size: 13px;
+  }
+  body .content {
+    padding: 0;
+    margin-top: 80px;
   }
 }
