@@ -101,6 +101,7 @@ body {
     font-family: @font-main;
     background: @background;
     color: @color;
+}
 
     header {
         // text-align: center;
@@ -126,8 +127,6 @@ body {
         }
 
         h1, h3 { margin: 20px auto; }
-
-        h2 { margin-bottom: 30px; }
 
         h3 {
             padding: @padding 0;
@@ -180,6 +179,11 @@ body {
         margin: 0 auto;
         padding: 60px;
 
+        h2 { 
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
         ul.photos {
             width: 100%;
             padding: 0;
@@ -193,13 +197,13 @@ body {
 
         img { max-width: @container-width; }
     }
-}
+
 
 @media (max-width: @mobile-break) {
 
     body {
         font-size: 13px;
-
+    }
         header {
             h1 { width: @logo-width * @mobile-scale;}
             img {
@@ -243,4 +247,3 @@ body {
             img { max-width: 400px; }
         }
     }
-}

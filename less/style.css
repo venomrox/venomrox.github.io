@@ -61,14 +61,14 @@ body {
   background: black;
   color: #00C43A;
 }
-body header {
+header {
   padding: 80px 0;
 }
-body header img {
+header img {
   margin: 0 auto;
   position: fixed;
 }
-body header.fall img:nth-child(1) {
+header.fall img:nth-child(1) {
   -o-animation: fall 1s ease-in;
   -moz-animation: fall 1s ease-in;
   -webkit-animation: fall 1s ease-in;
@@ -86,7 +86,7 @@ body header.fall img:nth-child(1) {
   -webkit-animation-delay: 100ms;
   animation-delay: 100ms;
 }
-body header.fall img:nth-child(2) {
+header.fall img:nth-child(2) {
   -o-animation: fall 1s ease-in;
   -moz-animation: fall 1s ease-in;
   -webkit-animation: fall 1s ease-in;
@@ -104,7 +104,7 @@ body header.fall img:nth-child(2) {
   -webkit-animation-delay: 200ms;
   animation-delay: 200ms;
 }
-body header.fall img:nth-child(3) {
+header.fall img:nth-child(3) {
   -o-animation: fall 1s ease-in;
   -moz-animation: fall 1s ease-in;
   -webkit-animation: fall 1s ease-in;
@@ -122,7 +122,7 @@ body header.fall img:nth-child(3) {
   -webkit-animation-delay: 300ms;
   animation-delay: 300ms;
 }
-body header.fall img:nth-child(4) {
+header.fall img:nth-child(4) {
   -o-animation: fall 1s ease-in;
   -moz-animation: fall 1s ease-in;
   -webkit-animation: fall 1s ease-in;
@@ -140,7 +140,7 @@ body header.fall img:nth-child(4) {
   -webkit-animation-delay: 400ms;
   animation-delay: 400ms;
 }
-body header.fall img:nth-child(5) {
+header.fall img:nth-child(5) {
   -o-animation: fall 1s ease-in;
   -moz-animation: fall 1s ease-in;
   -webkit-animation: fall 1s ease-in;
@@ -158,46 +158,43 @@ body header.fall img:nth-child(5) {
   -webkit-animation-delay: 500ms;
   animation-delay: 500ms;
 }
-body header h1 {
+header h1 {
   width: 400px;
   min-height: 200px;
 }
-body header h1,
-body header h3 {
+header h1,
+header h3 {
   margin: 20px auto;
 }
-body header h2 {
-  margin-bottom: 30px;
-}
-body header h3 {
+header h3 {
   padding: 20px 0;
   width: 500px;
   text-align: left;
 }
-body header h3 b {
+header h3 b {
   margin-left: 3px;
   -webkit-animation: 1.2s blink step-end infinite;
   -moz-animation: 1.2s blink step-end infinite;
   -o-animation: 1.2s blink step-end infinite;
   animation: 1.2s blink step-end infinite;
 }
-body header h3 span:nth-child(2) {
+header h3 span:nth-child(2) {
   color: black;
 }
-body nav {
+nav {
   min-height: 100px;
   width: 800px;
   margin: 0 auto;
   padding: 20px 0;
 }
-body nav img {
+nav img {
   float: left;
 }
-body nav span {
+nav span {
   float: right;
   min-height: 100px;
 }
-body nav button {
+nav button {
   margin-top: 40px;
   padding: 20px;
   color: #00C43A;
@@ -206,70 +203,74 @@ body nav button {
   text-transform: uppercase;
   box-shadow: none;
 }
-body nav button.selected {
+nav button.selected {
   border-color: #00912b;
   color: #00912b;
 }
-body .content {
+.content {
   max-width: 800px;
   margin: 0 auto;
   padding: 60px;
 }
-body .content ul.photos {
+.content h2 {
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+.content ul.photos {
   width: 100%;
   padding: 0;
   list-style-type: none;
 }
-body .content ul.photos li {
+.content ul.photos li {
   text-align: center;
   margin-bottom: 40px;
 }
-body .content img {
+.content img {
   max-width: 800px;
 }
 @media (max-width: 800px) {
   body {
     font-size: 13px;
   }
-  body header h1 {
+  header h1 {
     width: 300px;
   }
-  body header img {
+  header img {
     max-width: 300px;
   }
-  body header h3 {
+  header h3 {
     padding-left: 6px;
     width: 350px;
     font-size: 13px;
   }
-  body nav {
+  nav {
     width: 100%;
   }
-  body nav h2 {
+  nav h2 {
     margin: 0 auto;
     float: none;
     width: 200px;
   }
-  body nav span {
+  nav span {
     width: 100%;
     display: flex;
     margin: 0 auto;
     position: relative;
     margin-bottom: 40px;
   }
-  body nav button {
+  nav button {
     flex-grow: 1;
     padding: 16px;
     font-size: 13px;
   }
-  body .content {
+  .content {
     padding: 0;
     margin-top: 80px;
   }
-  body .content ul.photos li {
+  .content ul.photos li {
     margin-bottom: 20px;
   }
-  body .content img {
+  .content img {
     max-width: 400px;
   }
 }
