@@ -55,8 +55,6 @@
         }
 
         protected init() {
-
-            //debugger;
             
             this.text = this.element.innerHTML;
             this.element.innerHTML = "";
@@ -79,7 +77,6 @@
 
         protected render(i, ii) {
 
-            //debugger;
             var x = this.text.slice(0, i + 1);
             this.element.innerHTML = x;
             this.element.appendChild(this.cursor.cloneNode(true));
@@ -87,12 +84,10 @@
 
         public static InitAll() {
 
-            //debugger; 
-
             var elements = document.querySelectorAll(TerminalWriter.selector);
             for (var i = 0, ii = elements.length; i != ii; ++i) {
 
-                TerminalWriter.Create(<HTMLElement>elements[i);
+                TerminalWriter.Create(<HTMLElement>elements[i]);
             }
         }
 
@@ -129,14 +124,14 @@
             }
 
             button.classList.add('selected');
-            this.route(button.dataset['nav']);
+            this.route(button.getAttribute('nav'));
         }
 
         public show() { this.element.classList.remove('hidden'); }
         public hide() { this.element.classList.add('hidden'); }
         
         public route(path: string) {
-
+        
             for (var i = 0, ii = this.buttons.length; i != ii; ++i) {
                      
                 var div = <HTMLElement>this.buttons[i];
@@ -167,6 +162,8 @@
 
         public static navbar: NavBar;
 
+        public static level: number = 0;
+
         public static Init(): void {
 
             document.querySelector("header").classList.add('fade-in');
@@ -179,23 +176,23 @@
         }
 
         private static anyKey(): void {
-            
-            document.querySelector('header').classList.add('fall');
-            // document.querySelector('header h3').classList.add('hidden');
-            // document.querySelector('content').classList.remove('hidden');
 
-            window.setTimeout(MainPage.levelOne, 1000);
+            switch (MainPage.level) {
+
+                case 0:
+                    document.querySelector('header').classList.add('fall');
+                    window.setTimeout(MainPage.levelOne, 1000);
+                    break;
+            }
         }
 
         private static levelOne(): void {
-
-            // Reset AnyKey
-            MainPage.anyKey = () => { }
 
             document.querySelector('header').classList.add('hidden');
 
             MainPage.navbar.route('home');
             MainPage.navbar.show();
+            MainPage.level = 1;
         }
     }
 }

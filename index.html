@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <header>
+	<header>
 		<h1>
 			<img src="./images/logo-medium-0.png" alt="V" />
 			<img src="./images/logo-medium-1.png" alt="E" />
@@ -23,7 +23,7 @@
 			<img src="./images/logo-medium-4.png" alt="M" />
 		</h1>
 		<h3 class="terminal-writer">Press any key to continue</h3>
-    </header>
+	</header>
 
 	<nav class="hidden">
 		<h2>
@@ -39,27 +39,49 @@
 	</nav>
 
 	<div route="home" class="content hidden">
-		About Venom
+		<h2>Welcome to venomrox.com</h2>
 		[coming soon]
-    </div>
+	</div>
 
 	<div route="photos" class="content hidden">
-		Photos
+		<h2>Photos</h2>
+		<ul class="photos">
+			<li>
+				<img src="./images/photos/001.jpg" />
+			</li>
+			<li>
+				<img src="./images/photos/band.001.jpg" />
+			</li>
+		</ul>
 		[coming soon]
 	</div>
 
 	<div route="games" class="content hidden">
-		Games
+		<h2>Games</h2>
 		[coming soon]
 	</div>
 
 	<div route="gear" class="content hidden">
-		Venom Gear
-		[coming soon]
+		<h2>Venom Gear</h2>
+		<h3>Get your Venom gear right here. Use the simple order form below to purchase hats, shirts, sticks, and other cool items.</h3>
+		<ul>
+			<li>
+				<b>Item:</b>
+				<span class="item"></span>
+
+				<b>Price:</b>
+				<span class="price"></span>
+
+				<b>Qty:</b>
+				<input type="text" name="qty" class="qty" pattern="[0-9]*" value="0" />
+
+				<div class="description"></div>
+			</li>
+		</ul>
 	</div>
-    
-    <script src="./ts/venom.js"></script>
+
+	<script src="./ts/venom.js"></script>
 	<script type="text/javascript">Venom.MainPage.Init()</script>
-    
+
 </body>
 </html>

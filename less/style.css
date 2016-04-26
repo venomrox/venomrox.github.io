@@ -166,6 +166,9 @@ body header h1,
 body header h3 {
   margin: 20px auto;
 }
+body header h2 {
+  margin-bottom: 30px;
+}
 body header h3 {
   padding: 20px 0;
   width: 500px;
@@ -212,6 +215,18 @@ body .content {
   margin: 0 auto;
   padding: 60px;
 }
+body .content ul.photos {
+  width: 100%;
+  padding: 0;
+  list-style-type: none;
+}
+body .content ul.photos li {
+  text-align: center;
+  margin-bottom: 40px;
+}
+body .content img {
+  max-width: 800px;
+}
 @media (max-width: 800px) {
   body {
     font-size: 13px;
@@ -250,5 +265,11 @@ body .content {
   body .content {
     padding: 0;
     margin-top: 80px;
+  }
+  body .content ul.photos li {
+    margin-bottom: 20px;
+  }
+  body .content img {
+    max-width: 400px;
   }
 }

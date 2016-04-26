@@ -27,7 +27,6 @@ var Venom;
             this.run();
         };
         TerminalWriter.prototype.init = function () {
-            //debugger;
             this.text = this.element.innerHTML;
             this.element.innerHTML = "";
             this.cursor = document.createElement("b");
@@ -42,13 +41,11 @@ var Venom;
             }
         };
         TerminalWriter.prototype.render = function (i, ii) {
-            //debugger;
             var x = this.text.slice(0, i + 1);
             this.element.innerHTML = x;
             this.element.appendChild(this.cursor.cloneNode(true));
         };
         TerminalWriter.InitAll = function () {
-            //debugger; 
             var elements = document.querySelectorAll(TerminalWriter.selector);
             for (var i = 0, ii = elements.length; i != ii; ++i) {
                 TerminalWriter.Create(elements[i]);
@@ -79,7 +76,7 @@ var Venom;
                 this.buttons[i].classList.remove('selected');
             }
             button.classList.add('selected');
-            this.route(button.dataset['nav']);
+            this.route(button.getAttribute('nav'));
         };
         NavBar.prototype.show = function () { this.element.classList.remove('hidden'); };
         NavBar.prototype.hide = function () { this.element.classList.add('hidden'); };
@@ -113,18 +110,20 @@ var Venom;
             MainPage.navbar = new NavBar(document.querySelector('nav'));
         };
         MainPage.anyKey = function () {
-            document.querySelector('header').classList.add('fall');
-            // document.querySelector('header h3').classList.add('hidden');
-            // document.querySelector('content').classList.remove('hidden');
-            window.setTimeout(MainPage.levelOne, 1000);
+            switch (MainPage.level) {
+                case 0:
+                    document.querySelector('header').classList.add('fall');
+                    window.setTimeout(MainPage.levelOne, 1000);
+                    break;
+            }
         };
         MainPage.levelOne = function () {
-            // Reset AnyKey
-            MainPage.anyKey = function () { };
             document.querySelector('header').classList.add('hidden');
             MainPage.navbar.route('home');
             MainPage.navbar.show();
+            MainPage.level = 1;
         };
+        MainPage.level = 0;
         return MainPage;
     }());
     Venom.MainPage = MainPage;
