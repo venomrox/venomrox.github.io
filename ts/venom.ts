@@ -1,5 +1,37 @@
 ﻿namespace Venom {
 
+    export class ScreenSaver {
+
+        private static timeout: number = 10000;
+
+        private static handle: number;
+
+        public static reset() {
+
+            ScreenSaver.handle = window.setTimeout(ScreenSaver.onTimer, ScreenSaver.timeout);
+        }
+        
+
+        private static onTimer() {
+
+
+        }
+
+        private static start() {
+
+        }
+
+        private static render() {
+
+
+        }
+
+        private static clear() {
+
+
+        }
+    }
+
     export class TerminalWriter {
 
         private static refreshRate: number = 40;
@@ -37,8 +69,8 @@
         protected render(i, ii) {
 
             //debugger;
-
-            this.element.innerHTML = this.text.slice(0, i + 1);
+            var x = this.text.slice(0, i + 1);
+            this.element.innerHTML = x;
             this.element.appendChild(this.cursor.cloneNode(true));
         }
 
@@ -63,8 +95,19 @@
 
             document.querySelector("header").classList.add("fade-in");
             TerminalWriter.InitAll();
+
+            document.onclick = MainPage.anyKey;
+            document.onkeyup = MainPage.anyKey;
+            
+        }
+
+        private static anyKey(): void {
+            
+            document.querySelector('header').classList.add('fall');
+            document.querySelector('header h3').classList.add('hidden');
+            document.querySelector('content').classList.remove('hidden');
         }
     }
 }
 
-Venom.MainPage.Init();
+// Venom.MainPage.Init();

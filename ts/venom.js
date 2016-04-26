@@ -1,5 +1,23 @@
 var Venom;
 (function (Venom) {
+    var ScreenSaver = (function () {
+        function ScreenSaver() {
+        }
+        ScreenSaver.reset = function () {
+            ScreenSaver.handle = window.setTimeout(ScreenSaver.onTimer, ScreenSaver.timeout);
+        };
+        ScreenSaver.onTimer = function () {
+        };
+        ScreenSaver.start = function () {
+        };
+        ScreenSaver.render = function () {
+        };
+        ScreenSaver.clear = function () {
+        };
+        ScreenSaver.timeout = 10000;
+        return ScreenSaver;
+    }());
+    Venom.ScreenSaver = ScreenSaver;
     var TerminalWriter = (function () {
         function TerminalWriter(element) {
             this.element = element;
@@ -18,7 +36,8 @@ var Venom;
         };
         TerminalWriter.prototype.render = function (i, ii) {
             //debugger;
-            this.element.innerHTML = this.text.slice(0, i + 1);
+            var x = this.text.slice(0, i + 1);
+            this.element.innerHTML = x;
             this.element.appendChild(this.cursor.cloneNode(true));
         };
         TerminalWriter.InitAll = function () {
@@ -42,10 +61,17 @@ var Venom;
         MainPage.Init = function () {
             document.querySelector("header").classList.add("fade-in");
             TerminalWriter.InitAll();
+            document.onclick = MainPage.anyKey;
+            document.onkeyup = MainPage.anyKey;
+        };
+        MainPage.anyKey = function () {
+            document.querySelector('header').classList.add('fall');
+            document.querySelector('header h3').classList.add('hidden');
+            document.querySelector('content').classList.remove('hidden');
         };
         return MainPage;
     }());
     Venom.MainPage = MainPage;
 })(Venom || (Venom = {}));
-Venom.MainPage.Init();
+// Venom.MainPage.Init(); 
 //# sourceMappingURL=venom.js.map

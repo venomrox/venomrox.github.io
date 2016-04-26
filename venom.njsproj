@@ -41,6 +41,11 @@
     </Content>
     <Content Include="fonts\C64_Pro-STYLE.ttf" />
     <Content Include="fonts\C64_Pro_Mono-STYLE.ttf" />
+    <Content Include="images\logo-medium-0.png" />
+    <Content Include="images\logo-medium-1.png" />
+    <Content Include="images\logo-medium-2.png" />
+    <Content Include="images\logo-medium-3.png" />
+    <Content Include="images\logo-medium-4.png" />
     <Content Include="less\style.css">
       <SubType>Content</SubType>
       <DependentUpon>less\style.less</DependentUpon>

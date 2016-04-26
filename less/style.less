@@ -17,9 +17,36 @@
 @mobile-break: 600px;
 @mobile-scale: 0.75;
 
-@-moz-keyframes blink { from, to { color: @color } 50% { color: @background } }
-@-webkit-keyframes blink { from, to { color: @color } 50% { color: @background } }
-@keyframes blink { from, to { color: @color } 50% { color: @background } }
+@-moz-keyframes blink {
+    from, to {
+        color: @color;
+    }
+
+    50% {
+        color: @background;
+    }
+}
+
+@-webkit-keyframes blink {
+    from, to {
+        color: @color;
+    }
+
+    50% {
+        color: @background;
+    }
+}
+
+@keyframes blink {
+    from, to {
+        color: @color;
+    }
+
+    50% {
+        color: @background;
+    }
+}
+
 .blink() {
     @blink-rate: 1.2s;
     -webkit-animation: @blink-rate blink step-end infinite;
@@ -28,19 +55,80 @@
     animation: @blink-rate blink step-end infinite;
 }
 
+@-webkit-keyframes fall {
+    0% {
+        margin-top: 0 0;
+    }
+
+    100% {
+        margin-top: 2000px;
+    }
+}
+
+.delay(@time) {
+
+    -o-animation-delay: @time;
+    -moz-animation-delay: @time;
+    -webkit-animation-delay: @time;
+    animation-delay: @time;
+
+}
+
+.fall(@time) {
+   
+    -o-animation: fall @time ease-in;
+    -moz-animation: fall @time ease-in;
+    -webkit-animation: fall @time ease-in;
+    animation: fall @time ease-in;
+    
+    -o-animation-iteration-count: 1;
+    -moz-animation-iteration-count: 1;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    
+    -o-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+.hidden { display: none; }
+
 body {
     font-family: @font-main;
     background: @background;
     color: @color;
 
     header {
-        text-align: center;
+        // text-align: center;
         padding: (4 * @padding) 0;
 
-        h3 {
+        img {
             margin: 0 auto;
+            position: fixed;
+        }
+
+        &.fall img { 
+            @fall-delay: 100ms;
+            &:nth-child(1) { .fall(1s); .delay(1 * @fall-delay) }
+            &:nth-child(2) { .fall(1s); .delay(2 * @fall-delay) }  
+            &:nth-child(3) { .fall(1s); .delay(3 * @fall-delay) }     
+            &:nth-child(4) { .fall(1s); .delay(4 * @fall-delay) }
+            &:nth-child(5) { .fall(1s); .delay(5 * @fall-delay) }  
+        }
+
+        h1 {
+            width: @logo-width;
+        }
+
+        h1, h3 {
+            margin: 20px auto;
+            min-height: @logo-width / 2;
+        }
+
+        h3 {
             padding: @padding 0;
-            width: @logo-width + 80;
+            width: @logo-width + 100;
             //font-size: 14px;
             text-align: left;
 
@@ -48,14 +136,19 @@ body {
                 margin-left: 3px;
                 .blink();
             }
+
             span {
 
                 &:nth-child(2) {
                     color: @background;
                 }
-
             }
         }
+    }
+
+    .content {
+        max-width: 900px;  
+        margin: 0 auto;
     }
 }
 
