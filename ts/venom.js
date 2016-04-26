@@ -82,7 +82,9 @@ var Venom;
             window.setTimeout(MainPage.levelOne, 1000);
         };
         MainPage.levelOne = function () {
-            MainPage.headerWriter.write("Coming soon");
+            document.querySelector('header').classList.add('hidden');
+            document.querySelector('nav').classList.remove('hidden');
+            document.querySelector('content').classList.remove('hidden');
         };
         return MainPage;
     }());

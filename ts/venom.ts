@@ -131,7 +131,9 @@
 
         private static levelOne(): void {
 
-            MainPage.headerWriter.write("Coming soon");
+            document.querySelector('header').classList.add('hidden');
+            document.querySelector('nav').classList.remove('hidden');
+            document.querySelector('content').classList.remove('hidden');
         }
     }
 }

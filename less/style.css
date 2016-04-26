@@ -44,6 +44,18 @@
 .hidden {
   display: none;
 }
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+span,
+div {
+  font-family: "C64 Pro Mono Local";
+}
 body {
   font-family: "C64 Pro Mono Local";
   background: black;
@@ -148,11 +160,11 @@ body header.fall img:nth-child(5) {
 }
 body header h1 {
   width: 400px;
+  min-height: 200px;
 }
 body header h1,
 body header h3 {
   margin: 20px auto;
-  min-height: 200px;
 }
 body header h3 {
   padding: 20px 0;
@@ -169,6 +181,28 @@ body header h3 b {
 body header h3 span:nth-child(2) {
   color: black;
 }
+body nav {
+  min-height: 100px;
+  width: 900px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+body nav img {
+  float: left;
+}
+body nav span {
+  float: right;
+  min-height: 100px;
+}
+body nav button {
+  margin-top: 40px;
+  padding: 20px;
+  color: #00C43A;
+  border: 1px solid #00C43A;
+  background: black;
+  text-transform: uppercase;
+  box-shadow: none;
+}
 body .content {
   max-width: 900px;
   margin: 0 auto;
@@ -181,5 +215,22 @@ body .content {
     padding-left: 6px;
     width: 350px;
     font-size: 13px;
+  }
+  body nav {
+    width: 100%;
+  }
+  body nav h2 {
+    margin: 0 auto;
+    float: none;
+    width: 200px;
+  }
+  body nav span {
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+    position: relative;
+  }
+  body nav button {
+    flex-grow: 1;
   }
 }
