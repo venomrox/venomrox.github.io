@@ -57,7 +57,7 @@
     <Content Include="ts\venom.js.map" />
     <Content Include=".gitattributes" />
     <Content Include=".gitignore" />
-    <Content Include="images\favicon.ico" />
+    <Content Include="favicon.ico" />
     <Content Include="images\logo-large.png" />
     <Content Include="images\logo-medium.png" />
     <Content Include="images\logo-small.png" />
