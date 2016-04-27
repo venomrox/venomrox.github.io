@@ -216,6 +216,9 @@ nav button.selected {
   margin-bottom: 30px;
   font-size: 16px;
 }
+.content p {
+  line-height: 20px;
+}
 .content ul.photos {
   width: 100%;
   padding: 0;
