@@ -29,18 +29,17 @@
 		<h2>
 			<img src="./images/logo-small.png" />
 		</h2>
-		<span>
+		<div>
 			<button nav="home">Home</button>
 			<button nav="photos">Photos</button>
-			<button nav="games">Games</button>
+			<button nav="events">Events</button>
 			<button nav="gear">Gear</button>
-
-		</span>
+		</div>
 	</nav>
 
 	<div route="home" class="content hidden">
 		<h2>Welcome to venomrox.com</h2>
-		[coming soon]
+		<p>Everything Venom, from event dates and photos to gear for sale and other cool stuff.</p>
 	</div>
 
 	<div route="photos" class="content hidden">
@@ -68,24 +67,26 @@
 		[more coming soon]
 	</div>
 
-	<div route="games" class="content hidden">
-		<h2>Games</h2>
-		[coming soon]
+	<div route="events" class="content hidden">
+		<h2>Events</h2>
+		<p>Upcoming events will be posted as soon as dates are pinned down. Check back later for updates.</p>
 	</div>
 
 	<div route="gear" class="content hidden">
+
 		<h2>Venom Gear</h2>
-		<p>Get your Venom gear right here. Use the simple order form below to purchase hats, shirts, sticks, and other cool items.</p>
-		<ul>
+		<p>Get your Venom gear right here. Use the order form below to purchase hats, shirts, sticks, and other cool items.</p>
+
+		<ul class="gear">
 			<li>
-				<b>Item:</b>
+				<label>Item:</label>
 				<span class="item"></span>
 
-				<b>Price:</b>
+				<label>Price:</label>
 				<span class="price"></span>
 
-				<b>Qty:</b>
-				<input type="text" name="qty" class="qty" pattern="[0-9]*" value="0" />
+				<label>Qty:</label>
+				<span class="qty"></span>
 
 				<div class="description"></div>
 			</li>

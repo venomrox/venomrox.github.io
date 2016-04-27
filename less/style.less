@@ -15,7 +15,8 @@
 @padding: 20px;
 @logo-width: 400px;
 @container-width: 800px;
-@mobile-break: 800px;
+@tablet-break: 800px;
+@mobile-break: 420px;
 @mobile-scale: 0.75;
 
 @-moz-keyframes blink {
@@ -154,8 +155,7 @@ nav {
     margin: 0 auto;
     padding: 20px 0;
 
-    img { float: left; }
-    span { float: right; min-height: 100px; }
+    div { float: right; min-height: 100px; }
 
     button {
         margin-top: 40px;
@@ -165,7 +165,8 @@ nav {
         background: @background;
         text-transform: uppercase;
         box-shadow: none;
-            
+        outline: none;
+
         &.selected {
             border-color: darken(@color, 10%);
             color: darken(@color, 10%);
@@ -180,72 +181,119 @@ nav {
     padding: 60px;
 
     h2 { 
-        margin-bottom: 30px;
+        margin-bottom: 32px;
         font-size: 16px;
+        //color: red;
     }
 
-    p { line-height: 20px; }
+    p { line-height: 20px; margin-bottom: 20px; }
 
-    ul.photos {
-        width: 100%;
-        padding: 0;
-        list-style-type: none;
+    ul { 
+        list-style-type: none; 
 
-        li { 
-            text-align: center; 
-            margin-bottom: 40px;
+        &.photos {
+            width: 100%;
+            padding: 0;
+
+            li { 
+                text-align: center; 
+                margin-bottom: 40px;
+            }
         }
-    }
+
+        &.gear {
+            padding: 20px;
+
+            label, span { 
+                float: left;
+                margin-bottom: 10px;
+            }
+            label { 
+                color: darkcyan; 
+                clear: left;
+            }
+            span { 
+                display: block; 
+                clear: right;
+            }
+        }
+    }       
 
     img { max-width: @container-width; }
 }
 
+@media (min-width: (@tablet-break + 1)) {
+  
+    nav {
+        h2 { display: inline; }
+        img { float: left; }
+    }
+}
 
-@media (max-width: @mobile-break) {
+@media (max-width: @tablet-break) {
 
     body {
         font-size: 13px;
     }
-        header {
-            h1 { width: @logo-width * @mobile-scale;}
-            img {
-                max-width: @logo-width * @mobile-scale;
-            }
 
-            h3 {
-                padding-left: 6px;
-                width: (@logo-width * @mobile-scale) + 50;
-                font-size: 13px;
-            }
+    header {
+
+        h1 { width: @logo-width * @mobile-scale;}
+
+        img {
+            max-width: @logo-width * @mobile-scale;
         }
 
-        nav {
-            width: 100%;
-            h2 { margin: 0 auto; float: none; width: 200px; }
-            span { 
-                width: 100%;
-                display: flex;
-                margin: 0 auto;
-                position: relative;
-                margin-bottom: 40px;
-            }
-
-            button { 
-                flex-grow: 1; 
-                padding: 16px;
-                font-size: 13px;
-            }
-        }
-
-        .content {
-            padding: 0;
-            margin-top: 80px;
-
-            ul.photos {
-             
-                li { margin-bottom: 20px; }
-            }
-
-            img { max-width: 400px; }
+        h3 {
+            padding-left: 6px;
+            width: (@logo-width * @mobile-scale) + 50;
+            font-size: 13px;
         }
     }
+
+    nav {
+        width: 100%;
+
+        h2 { 
+            margin: 0 auto; 
+            float: none; 
+            width: 200px;
+        }
+
+        div { 
+            width: 100%;
+            display: flex;
+            margin: 0 auto;
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        button { 
+            flex-grow: 1; 
+            padding: 12px;
+            font-size: 12px;
+        }
+    }
+
+    .content {
+        padding: 0;
+        margin-top: 80px;
+
+        ul.photos {
+             
+            li { margin-bottom: 20px; }
+        }
+
+        img { max-width: 400px; }
+    }
+}
+
+@media (max-width: @mobile-break) {
+
+    .content {
+
+        ul.photos {
+            img { max-width: 200px; }
+        }
+    }
+}
