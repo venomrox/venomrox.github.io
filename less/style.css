@@ -246,7 +246,7 @@ nav button.selected {
   clear: right;
 }
 .content img {
-  max-width: 800px;
+  max-width: 500px;
 }
 @media (min-width: 801px) {
   nav h2 {
@@ -299,7 +299,7 @@ nav button.selected {
     margin-bottom: 20px;
   }
   .content img {
-    max-width: 400px;
+    max-width: 300px;
   }
 }
 @media (max-width: 420px) {
