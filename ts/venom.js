@@ -1,5 +1,12 @@
 var Venom;
 (function (Venom) {
+    var SiteConfig = (function () {
+        function SiteConfig() {
+        }
+        SiteConfig.mailToURL = "mailto:orders@venomrox.com";
+        return SiteConfig;
+    }());
+    Venom.SiteConfig = SiteConfig;
     var ScreenSaver = (function () {
         function ScreenSaver() {
         }
@@ -269,6 +276,9 @@ var Venom;
                         for (var s = 0, ss = item.sizes.length; s != ss; ++s) {
                             var selector = '.size > button[value=' + Size[item.sizes[s]] + ']';
                             var button = template.querySelector(selector);
+                            if (item.sizes[s] == Size.L) {
+                                button.classList.add('selected');
+                            }
                             button.classList.remove('hidden');
                             button.onclick = this.onClickButton.bind(this, button);
                         }
@@ -282,6 +292,9 @@ var Venom;
                             button.value = colorCode.toString();
                             button.textContent = Color[colorCode];
                             button.onclick = this.onClickButton.bind(this, button);
+                            if (i == 0) {
+                                button.classList.add('selected');
+                            }
                             colorEl.appendChild(button);
                         }
                     }
@@ -320,7 +333,7 @@ var Venom;
             button.classList.add('selected');
         };
         OrderSheet.prototype.submitOrder = function () {
-            var order = [];
+            var orders = [];
             var items = this.element.querySelectorAll('li');
             for (var i = 0, ii = items.length; i != ii; ++i) {
                 var li = items[i];
@@ -330,9 +343,20 @@ var Venom;
                 }
                 var itemCode = li.querySelector('input.itemCode').value;
                 var category = Category[li.parentElement.getAttribute('category')];
-                if (li.querySelector('.color')) {
-                }
+                var price = parseInt(li.querySelector('.price > span').innerHTML);
+                var colorEl = li.querySelector('.color > button.selected');
+                var sizeEl = li.querySelector('.size > button.selected');
+                var itemOrder = {
+                    itemCode: itemCode,
+                    category: category,
+                    qty: qty,
+                    total: "$" + (qty * price)
+                };
+                orders.push(itemOrder);
             }
+            debugger;
+            var mailto = SiteConfig.mailToURL + "?subject=" + encodeURIComponent("VENOM ORDER") + "&body=" + encodeURIComponent(JSON.stringify(orders));
+            window.location.href = mailto;
         };
         return OrderSheet;
     }());

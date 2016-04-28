@@ -1,5 +1,10 @@
 ﻿namespace Venom {
 
+    export class SiteConfig {
+
+        public static mailToURL: string = "mailto:orders@venomrox.com";
+    }
+
     export class ScreenSaver {
 
         private static timeout: number = 10000;
@@ -198,7 +203,7 @@
         qty: number;
         size?: Size;
         color?: Color;
-       
+        total: string;
     }
 
     export namespace Items {
@@ -336,9 +341,7 @@
                 var ul: HTMLUListElement = document.createElement('ul');
                 ul.classList.add('gear');
                 ul.setAttribute('category', Venom.Category[c]);
-
-
-
+                
                 var itemList = this.itemsByCategory[c];
                 for (var x in itemList) {
                     
@@ -358,6 +361,10 @@
                         for (var s = 0, ss = item.sizes.length; s != ss; ++s) {
                             var selector = '.size > button[value=' + Size[item.sizes[s]] + ']';
                             var button = <HTMLButtonElement>template.querySelector(selector);
+                            if (item.sizes[s] == Size.L) {
+                                button.classList.add('selected');
+                            }
+
                             button.classList.remove('hidden');
                             button.onclick = this.onClickButton.bind(this, button);
                         }
@@ -374,6 +381,10 @@
                             button.value = colorCode.toString();
                             button.textContent = Color[colorCode];
                             button.onclick = this.onClickButton.bind(this, button);
+
+                            if (i == 0) {
+                                button.classList.add('selected');
+                            }
 
                             colorEl.appendChild(button);
                         }
@@ -428,7 +439,7 @@
 
         private submitOrder() {
 
-            var order = [];
+            var orders: Array<ItemOrder> = [];
 
             var items = this.element.querySelectorAll('li');
             for (var i = 0, ii = items.length; i != ii; ++i) {
@@ -441,11 +452,24 @@
 
                 var itemCode = (<HTMLInputElement>li.querySelector('input.itemCode')).value;
                 var category = Category[li.parentElement.getAttribute('category')];
+                var price = parseInt((<HTMLElement>li.querySelector('.price > span')).innerHTML);
+                var colorEl = <HTMLButtonElement>li.querySelector('.color > button.selected');
+                var sizeEl = <HTMLButtonElement>li.querySelector('.size > button.selected');
 
-                if (li.querySelector('.color')) {
-
+                var itemOrder: ItemOrder = {
+                    itemCode: itemCode,
+                    category: category,
+                    qty: qty,
+                    total: "$" + (qty * price)
                 }
+
+                orders.push(itemOrder);
             }
+
+
+            debugger;
+            var mailto = SiteConfig.mailToURL + "?subject=" + encodeURIComponent("VENOM ORDER") + "&body=" + encodeURIComponent(JSON.stringify(orders));
+            window.location.href = mailto;
         }
     }
 
