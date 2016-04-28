@@ -127,7 +127,9 @@ var Venom;
         Color[Color["White"] = 2] = "White";
         Color[Color["LightPink"] = 3] = "LightPink";
         Color[Color["DarkPink"] = 4] = "DarkPink";
-        Color[Color["TT_PinkBlack"] = 5] = "TT_PinkBlack";
+        Color[Color["TT_BlackPink"] = 5] = "TT_BlackPink";
+        Color[Color["TT_BlackBlack"] = 6] = "TT_BlackBlack";
+        Color[Color["TT_BlackGrey"] = 7] = "TT_BlackGrey";
     })(Venom.Color || (Venom.Color = {}));
     var Color = Venom.Color;
     var Items;
@@ -189,7 +191,7 @@ var Venom;
                 this.itemName = "Trucker Hat";
                 this.description = "Trucker-style hat Venom logo on front";
                 this.category = Category.Hats;
-                this.colors = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
+                this.colors = [Color.TT_BlackBlack, Color.TT_BlackGrey, Color.TT_BlackPink];
                 this.price = 15;
             }
             return TruckerHat;
@@ -342,20 +344,41 @@ var Venom;
                     continue;
                 }
                 var itemCode = li.querySelector('input.itemCode').value;
+                var itemName = li.querySelector('.name > span').innerHTML;
                 var category = Category[li.parentElement.getAttribute('category')];
                 var price = parseInt(li.querySelector('.price > span').innerHTML);
                 var colorEl = li.querySelector('.color > button.selected');
                 var sizeEl = li.querySelector('.size > button.selected');
                 var itemOrder = {
                     itemCode: itemCode,
+                    itemName: itemName,
                     category: category,
                     qty: qty,
-                    total: "$" + (qty * price)
+                    total: (qty * price)
                 };
                 orders.push(itemOrder);
             }
-            debugger;
-            var mailto = SiteConfig.mailToURL + "?subject=" + encodeURIComponent("VENOM ORDER") + "&body=" + encodeURIComponent(JSON.stringify(orders));
+            var total = 0;
+            var nl = "\n";
+            var body = "VENOM - ORDER DETAILS \n\n";
+            for (var i = 0, ii = orders.length; i != ii; ++i) {
+                var order = orders[i];
+                body += "ITEM #: " + order.itemCode + nl;
+                body += "ITEM: " + order.itemName + nl;
+                if (order.hasOwnProperty('size')) {
+                    body += "SIZE: " + order.size;
+                }
+                if (order.hasOwnProperty('color')) {
+                    body += "COLOR: " + order.color;
+                }
+                body += "QTY: " + order.qty.toString() + nl;
+                body += "TOTAL: " + "$" + order.total.toString() + nl;
+                body += "\n";
+                total += order.total;
+            }
+            body += "\n" + "ITEMS: " + orders.length;
+            body += "\n" + "TOTAL: " + "$" + total;
+            var mailto = SiteConfig.mailToURL + "?subject=" + encodeURIComponent("VENOM ORDER") + "&body=" + body;
             window.location.href = mailto;
         };
         return OrderSheet;
