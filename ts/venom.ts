@@ -202,7 +202,7 @@
             public category: Category = Category.Shirts;
             public sizes: Array<Size> = [Size.S, Size.M, Size.L, Size.XL, Size.XXL];
             public colors: Array<Color> = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
-            public price: number = 22;
+            public price: number = 15;
 
             constructor() { }
         }
@@ -215,7 +215,7 @@
             public category: Category = Category.Shirts;
             public sizes: Array<Size> = [Size.S, Size.M, Size.L, Size.XL, Size.XXL];
             public colors: Array<Color> = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
-            public price: number = 22;
+            public price: number = 15;
 
             constructor() { }
         }
@@ -228,7 +228,7 @@
             public category: Category = Category.Shirts;
             public sizes: Array<Size> = [Size.S, Size.M, Size.L, Size.XL, Size.XXL];
             public colors: Array<Color> = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
-            public price: number = 22;
+            public price: number = 15;
 
             constructor() { }
         }
@@ -240,7 +240,7 @@
             public description: string = "Baseball-cap style hat with Venom logo on front of hat";
             public category: Category = Category.Hats;
             public colors: Array<Color> = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
-            public price: number = 25;
+            public price: number = 15;
         }
 
         export class TruckerHat {
@@ -250,7 +250,7 @@
             public description: string = "Trucker-style hat Venom logo on front";
             public category: Category = Category.Hats;
             public colors: Array<Color> = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
-            public price: number = 25;
+            public price: number = 15;
         }
 
         export class Visor {
@@ -260,7 +260,7 @@
             public description: string = "Visor with Venom logo on front";
             public category: Category = Category.Hats;
             public colors: Array<Color> = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
-            public price: number = 25;
+            public price: number = 15;
         }
 
         export class YetiCup {

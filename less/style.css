@@ -299,7 +299,7 @@ nav button.selected {
   margin: 0 auto;
   color: #00C43A;
   background: black;
-  border: 1px solid darkcyan;
+  border: 1px solid #00C43A;
 }
 @media (min-width: 801px) {
   nav h2 {

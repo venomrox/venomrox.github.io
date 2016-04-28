@@ -133,7 +133,7 @@ var Venom;
                 this.category = Category.Shirts;
                 this.sizes = [Size.S, Size.M, Size.L, Size.XL, Size.XXL];
                 this.colors = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
-                this.price = 22;
+                this.price = 15;
             }
             return TShirt;
         }());
@@ -146,7 +146,7 @@ var Venom;
                 this.category = Category.Shirts;
                 this.sizes = [Size.S, Size.M, Size.L, Size.XL, Size.XXL];
                 this.colors = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
-                this.price = 22;
+                this.price = 15;
             }
             return VNeck;
         }());
@@ -159,7 +159,7 @@ var Venom;
                 this.category = Category.Shirts;
                 this.sizes = [Size.S, Size.M, Size.L, Size.XL, Size.XXL];
                 this.colors = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
-                this.price = 22;
+                this.price = 15;
             }
             return TankTop;
         }());
@@ -171,7 +171,7 @@ var Venom;
                 this.description = "Baseball-cap style hat with Venom logo on front of hat";
                 this.category = Category.Hats;
                 this.colors = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
-                this.price = 25;
+                this.price = 15;
             }
             return BaseballCap;
         }());
@@ -183,7 +183,7 @@ var Venom;
                 this.description = "Trucker-style hat Venom logo on front";
                 this.category = Category.Hats;
                 this.colors = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
-                this.price = 25;
+                this.price = 15;
             }
             return TruckerHat;
         }());
@@ -195,7 +195,7 @@ var Venom;
                 this.description = "Visor with Venom logo on front";
                 this.category = Category.Hats;
                 this.colors = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
-                this.price = 25;
+                this.price = 15;
             }
             return Visor;
         }());
