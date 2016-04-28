@@ -75,20 +75,73 @@
 	<div route="gear" class="content hidden">
 
 		<h2>Venom Gear</h2>
-		<p>Get your Venom gear right here. Use the order form below to purchase hats, shirts, sticks, and other cool items.</p>
+		<p>Get your Venom gear right here. Use the order form at the bottom of the screen to purchase hats, shirts, sticks, and other cool items.</p>
 
-		<ul class="gear">
+		<ul class="photos">
 			<li>
-				<label>Item:</label>
-				<span class="item"></span>
+				<img src="./images/merch/general/merch.general.001.jpg" />
+			</li>
+			<li>
+				<img src="./images/merch/general/merch.general.002.jpg" />
+			</li>
+			<li>
+				<img src="./images/merch/general/merch.general.003.jpg" />
+			</li>
+			<li>
+				<img src="./images/merch/general/merch.general.004.jpg" />
+			</li>
+		</ul>
 
-				<label>Price:</label>
-				<span class="price"></span>
+		<h3>Shirts</h3>
+		<div class="orderSheet">
 
-				<label>Qty:</label>
-				<span class="qty"></span>
+		</div>
 
-				<div class="description"></div>
+		<ul class="gear" category="shirts">
+
+		</ul>
+	</div>
+
+	<div class="hidden" id="templates">
+
+		<ul id="itemTemplateUL">
+			<li item="">
+				<div class="name">
+					
+					<span></span>
+				</div>
+
+				<div class="description">
+					
+					<span></span>
+				</div>
+
+				<div class="size hidden">
+					<label class="size">Size:</label>
+					<button class="hidden" value="S">S</button>
+					<button class="hidden" value="M">M</button>
+					<button class="hidden" value="L">L</button>
+					<button class="hidden" value="XL">XL</button>
+					<button class="hidden" value="XXL">XXL</button>
+				</div>
+
+				<div class="price">
+					<label>Price:</label>
+					<span></span>
+				</div>
+
+				<div class="qty">
+					<label>Qty:</label>
+					<button value="minus">-</button>
+					<span class="qty" value="0">0</span>
+					<button value="plus">+</button>
+				</div>
+				
+				<div class="total">
+					<label>Total</label>
+					<span></span>
+				</div>
+
 			</li>
 		</ul>
 	</div>

@@ -156,6 +156,225 @@
         }
     }
 
+    export enum Size {
+
+        S,
+        M,
+        L,
+        XL,
+        XXL
+    }
+
+    export enum Category {
+
+        Shirts,
+        Hats,
+        Visors,
+        Accessories
+    }
+
+    export enum Color {
+        Black,
+        Grey,
+        White,
+        LightPink,
+        DarkPink,
+        TT_PinkBlack
+    }
+
+    interface IStoreItem {
+        itemCode: string;
+        itemName: string;
+        description: string;
+        category: Category;
+        sizes?: Array<Size>;
+        colors?: Array<Color>;
+        price: number;
+    }
+    
+    export namespace Items {
+        
+        export class TShirt implements IStoreItem {
+
+            public itemCode: string = "SHIRT001";
+            public itemName: string = "T-Shirt";
+            public description: string = "Standard T-Shirt with Venom logo on front";
+            public category: Category = Category.Shirts;
+            public sizes: Array<Size> = [Size.S, Size.M, Size.L, Size.XL, Size.XXL];
+            public colors: Array<Color> = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
+            public price: number = 22.5;
+
+            constructor() { }
+        }
+
+        export class VNeck implements IStoreItem{
+
+            public itemCode: string = "SHIRT002";
+            public itemName: string = "V-Neck Shirt";
+            public description: string = "V-Neck shirt with Venom logo on front";
+            public category: Category = Category.Shirts;
+            public sizes: Array<Size> = [Size.S, Size.M, Size.L, Size.XL, Size.XXL];
+            public colors: Array<Color> = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
+            public price: number = 22.5;
+
+            constructor() { }
+        }
+
+        export class TankTop implements IStoreItem {
+
+            public itemCode: string = "SHIRT003";
+            public itemName: string = "Tank Top";
+            public description: string = "Tank top with Venom logo on front";
+            public category: Category = Category.Shirts;
+            public sizes: Array<Size> = [Size.S, Size.M, Size.L, Size.XL, Size.XXL];
+            public colors: Array<Color> = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
+            public price: number = 22.5;
+
+            constructor() { }
+        }
+
+        export class BaseballCap {
+
+            public itemCode: string = "HAT001";
+            public itemName: string = "Hat";
+            public description: string = "Baseball-cap style hat with Venom logo on front of hat";
+            public category: Category = Category.Hats;
+            public colors: Array<Color> = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
+            public price: number = 25;
+        }
+
+        export class TruckerHat {
+
+            public itemCode: string = "HAT002";
+            public itemName: string = "Trucker Hat";
+            public description: string = "Trucker-style hat Venom logo on front";
+            public category: Category = Category.Hats;
+            public colors: Array<Color> = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
+            public price: number = 25;
+        }
+
+        export class Visor {
+
+            public itemCode: string = "HAT003";
+            public itemName: string = "Visor";
+            public description: string = "Visor with Venom logo on front";
+            public category: Category = Category.Hats;
+            public colors: Array<Color> = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
+            public price: number = 25;
+        }
+
+        export class YetiCup {
+
+            public itemCode: string = "YETI001";
+            public itemName: string = "Yeti Cup";
+            public description: string = "Yeti cup with awesome Venom graphics wrapped around cup";
+            public category: Category = Category.Accessories;
+            public price: number = 90;
+        }
+
+    }
+
+    export class OrderSheet {
+
+        private element: HTMLElement;
+
+        private itemsByCategory: { category: Array<IStoreItem> } = <{ category: Array<IStoreItem> }>{};
+
+        private itemTemplate: HTMLElement;
+
+        private controls = [];
+
+        constructor(element: HTMLElement) {
+
+            this.element = element;
+            this.itemTemplate = <HTMLElement>document.querySelector('#itemTemplateUL > li');
+
+            for (var i in Items) {
+
+                var item: IStoreItem = new Items[i];
+                var category = Venom.Category[item.category];
+                if (!this.itemsByCategory.hasOwnProperty(category)) {
+                    this.itemsByCategory[category] = [];
+                }
+
+                this.itemsByCategory[category].push(item);
+            }
+
+            for (var c in this.itemsByCategory) {
+
+                var ul: HTMLUListElement = document.createElement('ul');
+                ul.classList.add('gear');
+                ul.setAttribute('category', Venom.Category[c]);
+
+
+                var itemList = this.itemsByCategory[c];
+                for (var x in itemList) {
+                    
+                    var item: IStoreItem = itemList[x];
+                    var template = <HTMLElement>this.itemTemplate.cloneNode(true);
+
+                    template.querySelector('.name > span').innerHTML = item.itemName;
+                    template.querySelector('.description > span').innerHTML = item.description;
+                    template.querySelector('.price > span').innerHTML = "$" + item.price.toString();
+                    var totalReadout = <HTMLElement>template.querySelector('.total > span');
+                    totalReadout.innerHTML = "$" + item.price.toString();
+
+                    if (item.hasOwnProperty('sizes')) {
+                        template.querySelector('.size').classList.remove('hidden');
+                       // debugger;
+                        for (var s = 0, ss = item.sizes.length; s != ss; ++s) {
+                            var selector = '.size > button[value=' + Size[item.sizes[s]] + ']';
+                            var button = <HTMLButtonElement>template.querySelector(selector);
+                            button.classList.remove('hidden');
+                            button.onclick = this.onClickSize.bind(this, button);
+                        }
+                    }
+
+                    var qtyplus = <HTMLButtonElement>template.querySelector('.qty > button[value=plus]');
+                    var qtyminus = <HTMLButtonElement>template.querySelector('.qty > button[value=minus]');
+                    qtyplus.onclick = this.onClickQty.bind(this, qtyplus, totalReadout);
+                    qtyminus.onclick = this.onClickQty.bind(this, qtyminus, totalReadout);
+
+                    ul.appendChild(template);
+                }
+
+                this.element.appendChild(ul);
+            }
+        }
+
+        private onClickQty(button: HTMLButtonElement, total: HTMLElement) {
+
+            var qtyElement = <HTMLElement>button.parentElement.querySelector('span');
+            var qty = parseInt(qtyElement.getAttribute('value'));
+
+            switch (button.value) {
+
+                case "+":
+                    qty += 1;
+                    break;
+
+                case "-":
+                    qty -= (qty > 0) ? 1 : 0;
+            }
+
+            var qtyReadout = qty.toString();
+            qtyElement.setAttribute('value', qtyReadout);
+            qtyElement.innerHTML = qtyReadout;
+
+            total.innerHTML = "$" + qtyReadout;
+        }
+
+        private onClickSize(button: HTMLButtonElement) {
+
+            var buttons = button.parentElement.querySelectorAll('button');
+            for (var i = 0, ii = buttons.length; i != ii; ++i) {
+                buttons[i].classList.remove('selected');
+            }
+
+            button.classList.add('selected');
+        }
+    }
+
     export class MainPage {
 
         public static headerWriter: TerminalWriter;
@@ -163,6 +382,8 @@
         public static navbar: NavBar;
 
         public static level: number = 0;
+
+        public static orderSheet: OrderSheet;
 
         public static Init(): void {
 
@@ -193,6 +414,8 @@
             MainPage.navbar.route('home');
             MainPage.navbar.show();
             MainPage.level = 1;
+
+            MainPage.orderSheet = new OrderSheet(<HTMLElement>document.querySelector('.orderSheet'));
         }
     }
 }
