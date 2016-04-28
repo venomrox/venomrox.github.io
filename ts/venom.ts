@@ -202,7 +202,7 @@
             public category: Category = Category.Shirts;
             public sizes: Array<Size> = [Size.S, Size.M, Size.L, Size.XL, Size.XXL];
             public colors: Array<Color> = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
-            public price: number = 22.5;
+            public price: number = 22;
 
             constructor() { }
         }
@@ -215,7 +215,7 @@
             public category: Category = Category.Shirts;
             public sizes: Array<Size> = [Size.S, Size.M, Size.L, Size.XL, Size.XXL];
             public colors: Array<Color> = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
-            public price: number = 22.5;
+            public price: number = 22;
 
             constructor() { }
         }
@@ -228,7 +228,7 @@
             public category: Category = Category.Shirts;
             public sizes: Array<Size> = [Size.S, Size.M, Size.L, Size.XL, Size.XXL];
             public colors: Array<Color> = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
-            public price: number = 22.5;
+            public price: number = 22;
 
             constructor() { }
         }
@@ -317,7 +317,7 @@
                     template.querySelector('.description > span').innerHTML = item.description;
                     template.querySelector('.price > span').innerHTML = "$" + item.price.toString();
                     var totalReadout = <HTMLElement>template.querySelector('.total > span');
-                    totalReadout.innerHTML = "$" + item.price.toString();
+                    totalReadout.innerHTML = "$0";
 
                     if (item.hasOwnProperty('sizes')) {
                         template.querySelector('.size').classList.remove('hidden');
@@ -332,28 +332,31 @@
 
                     var qtyplus = <HTMLButtonElement>template.querySelector('.qty > button[value=plus]');
                     var qtyminus = <HTMLButtonElement>template.querySelector('.qty > button[value=minus]');
-                    qtyplus.onclick = this.onClickQty.bind(this, qtyplus, totalReadout);
-                    qtyminus.onclick = this.onClickQty.bind(this, qtyminus, totalReadout);
+                    qtyplus.onclick = this.onClickQty.bind(this, qtyplus, item, totalReadout);
+                    qtyminus.onclick = this.onClickQty.bind(this, qtyminus, item, totalReadout);
 
                     ul.appendChild(template);
                 }
 
+                var h3 = document.createElement("h3");
+                h3.innerHTML = c;
+                this.element.appendChild(h3);
                 this.element.appendChild(ul);
             }
         }
 
-        private onClickQty(button: HTMLButtonElement, total: HTMLElement) {
+        private onClickQty(button: HTMLButtonElement, item: IStoreItem, total: HTMLElement) {
 
             var qtyElement = <HTMLElement>button.parentElement.querySelector('span');
             var qty = parseInt(qtyElement.getAttribute('value'));
 
             switch (button.value) {
 
-                case "+":
+                case "plus":
                     qty += 1;
                     break;
 
-                case "-":
+                case "minus":
                     qty -= (qty > 0) ? 1 : 0;
             }
 
@@ -361,7 +364,7 @@
             qtyElement.setAttribute('value', qtyReadout);
             qtyElement.innerHTML = qtyReadout;
 
-            total.innerHTML = "$" + qtyReadout;
+            total.innerHTML = "$" + (qty * item.price).toString();
         }
 
         private onClickSize(button: HTMLButtonElement) {

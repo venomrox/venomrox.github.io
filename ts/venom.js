@@ -133,7 +133,7 @@ var Venom;
                 this.category = Category.Shirts;
                 this.sizes = [Size.S, Size.M, Size.L, Size.XL, Size.XXL];
                 this.colors = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
-                this.price = 22.5;
+                this.price = 22;
             }
             return TShirt;
         }());
@@ -146,7 +146,7 @@ var Venom;
                 this.category = Category.Shirts;
                 this.sizes = [Size.S, Size.M, Size.L, Size.XL, Size.XXL];
                 this.colors = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
-                this.price = 22.5;
+                this.price = 22;
             }
             return VNeck;
         }());
@@ -159,7 +159,7 @@ var Venom;
                 this.category = Category.Shirts;
                 this.sizes = [Size.S, Size.M, Size.L, Size.XL, Size.XXL];
                 this.colors = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
-                this.price = 22.5;
+                this.price = 22;
             }
             return TankTop;
         }());
@@ -238,7 +238,7 @@ var Venom;
                     template.querySelector('.description > span').innerHTML = item.description;
                     template.querySelector('.price > span').innerHTML = "$" + item.price.toString();
                     var totalReadout = template.querySelector('.total > span');
-                    totalReadout.innerHTML = "$" + item.price.toString();
+                    totalReadout.innerHTML = "$0";
                     if (item.hasOwnProperty('sizes')) {
                         template.querySelector('.size').classList.remove('hidden');
                         // debugger;
@@ -251,27 +251,30 @@ var Venom;
                     }
                     var qtyplus = template.querySelector('.qty > button[value=plus]');
                     var qtyminus = template.querySelector('.qty > button[value=minus]');
-                    qtyplus.onclick = this.onClickQty.bind(this, qtyplus, totalReadout);
-                    qtyminus.onclick = this.onClickQty.bind(this, qtyminus, totalReadout);
+                    qtyplus.onclick = this.onClickQty.bind(this, qtyplus, item, totalReadout);
+                    qtyminus.onclick = this.onClickQty.bind(this, qtyminus, item, totalReadout);
                     ul.appendChild(template);
                 }
+                var h3 = document.createElement("h3");
+                h3.innerHTML = c;
+                this.element.appendChild(h3);
                 this.element.appendChild(ul);
             }
         }
-        OrderSheet.prototype.onClickQty = function (button, total) {
+        OrderSheet.prototype.onClickQty = function (button, item, total) {
             var qtyElement = button.parentElement.querySelector('span');
             var qty = parseInt(qtyElement.getAttribute('value'));
             switch (button.value) {
-                case "+":
+                case "plus":
                     qty += 1;
                     break;
-                case "-":
+                case "minus":
                     qty -= (qty > 0) ? 1 : 0;
             }
             var qtyReadout = qty.toString();
             qtyElement.setAttribute('value', qtyReadout);
             qtyElement.innerHTML = qtyReadout;
-            total.innerHTML = "$" + qtyReadout;
+            total.innerHTML = "$" + (qty * item.price).toString();
         };
         OrderSheet.prototype.onClickSize = function (button) {
             var buttons = button.parentElement.querySelectorAll('button');
