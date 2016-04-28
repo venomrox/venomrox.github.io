@@ -336,10 +336,15 @@ var Venom;
             document.querySelector('nav > h2').onclick = MainPage.playMusic;
         };
         MainPage.playMusic = function () {
+            if (MainPage.isMusicPlaying) {
+                return;
+            }
+            MainPage.isMusicPlaying = true;
             var audio = new Audio('./sounds/crytough.wav');
             audio.play();
         };
         MainPage.level = 0;
+        MainPage.isMusicPlaying = false;
         return MainPage;
     }());
     Venom.MainPage = MainPage;

@@ -441,7 +441,14 @@
             (<HTMLElement>document.querySelector('nav > h2')).onclick = MainPage.playMusic;
         }
 
+        private static isMusicPlaying: boolean = false;
         private static playMusic(): void {
+
+            if (MainPage.isMusicPlaying) {
+                return;
+            }
+
+            MainPage.isMusicPlaying = true;
 
             var audio = new Audio('./sounds/crytough.wav');
             audio.play();
