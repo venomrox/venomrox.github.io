@@ -263,13 +263,32 @@
             public price: number = 15;
         }
 
+        export class Bandana {
+
+            public itemCode: string = "HAT004";
+            public itemName: string = "Bandana";
+            public description: string = "Old-school bandana Venom logo on front";
+            public category: Category = Category.Hats;
+            public colors: Array<Color> = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
+            public price: number = 15;
+        }
+
+        export class DrumSticks {
+
+            public itemCode: string = "STICKS001";
+            public itemName: string = "Drum Sticks";
+            public description: string = "Black drum sticks with Venom logo";
+            public category: Category = Category.Accessories;
+            public price: number = 15;
+        }
+
         export class YetiCup {
 
             public itemCode: string = "YETI001";
             public itemName: string = "Yeti Cup";
             public description: string = "Yeti cup with awesome Venom graphics wrapped around cup";
             public category: Category = Category.Accessories;
-            public price: number = 90;
+            public price: number = 80;
         }
 
     }
@@ -419,6 +438,13 @@
             MainPage.level = 1;
 
             MainPage.orderSheet = new OrderSheet(<HTMLElement>document.querySelector('.orderSheet'));
+            (<HTMLElement>document.querySelector('nav > h2')).onclick = MainPage.playMusic;
+        }
+
+        private static playMusic(): void {
+
+            var audio = new Audio('./sounds/crytough.wav');
+            audio.play();
         }
     }
 }

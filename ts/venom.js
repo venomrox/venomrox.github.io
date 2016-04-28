@@ -200,13 +200,36 @@ var Venom;
             return Visor;
         }());
         Items.Visor = Visor;
+        var Bandana = (function () {
+            function Bandana() {
+                this.itemCode = "HAT004";
+                this.itemName = "Bandana";
+                this.description = "Old-school bandana Venom logo on front";
+                this.category = Category.Hats;
+                this.colors = [Color.Black, Color.Grey, Color.White, Color.DarkPink, Color.LightPink];
+                this.price = 15;
+            }
+            return Bandana;
+        }());
+        Items.Bandana = Bandana;
+        var DrumSticks = (function () {
+            function DrumSticks() {
+                this.itemCode = "STICKS001";
+                this.itemName = "Drum Sticks";
+                this.description = "Black drum sticks with Venom logo";
+                this.category = Category.Accessories;
+                this.price = 15;
+            }
+            return DrumSticks;
+        }());
+        Items.DrumSticks = DrumSticks;
         var YetiCup = (function () {
             function YetiCup() {
                 this.itemCode = "YETI001";
                 this.itemName = "Yeti Cup";
                 this.description = "Yeti cup with awesome Venom graphics wrapped around cup";
                 this.category = Category.Accessories;
-                this.price = 90;
+                this.price = 80;
             }
             return YetiCup;
         }());
@@ -310,6 +333,11 @@ var Venom;
             MainPage.navbar.show();
             MainPage.level = 1;
             MainPage.orderSheet = new OrderSheet(document.querySelector('.orderSheet'));
+            document.querySelector('nav > h2').onclick = MainPage.playMusic;
+        };
+        MainPage.playMusic = function () {
+            var audio = new Audio('./sounds/crytough.wav');
+            audio.play();
         };
         MainPage.level = 0;
         return MainPage;

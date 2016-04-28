@@ -87,6 +87,7 @@
     <Folder Include="images\merch\general\" />
     <Folder Include="less\" />
     <Folder Include="data\" />
+    <Folder Include="sounds\" />
     <Folder Include="ts\" />
   </ItemGroup>
   <ItemGroup>
