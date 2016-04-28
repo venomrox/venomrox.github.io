@@ -191,7 +191,16 @@
         colors?: Array<Color>;
         price: number;
     }
-    
+
+    interface ItemOrder {
+        itemCode: string;
+        category: Category;
+        qty: number;
+        size?: Size;
+        color?: Color;
+       
+    }
+
     export namespace Items {
         
         export class TShirt implements IStoreItem {
@@ -308,9 +317,12 @@
             this.element = element;
             this.itemTemplate = <HTMLElement>document.querySelector('#itemTemplateUL > li');
 
-            for (var i in Items) {
 
-                var item: IStoreItem = new Items[i];
+            (<HTMLElement>document.querySelector('button.order')).onclick = this.submitOrder.bind(this);
+
+            for (var idx in Items) {
+
+                var item: IStoreItem = new Items[idx];
                 var category = Venom.Category[item.category];
                 if (!this.itemsByCategory.hasOwnProperty(category)) {
                     this.itemsByCategory[category] = [];
@@ -326,12 +338,14 @@
                 ul.setAttribute('category', Venom.Category[c]);
 
 
+
                 var itemList = this.itemsByCategory[c];
                 for (var x in itemList) {
                     
                     var item: IStoreItem = itemList[x];
                     var template = <HTMLElement>this.itemTemplate.cloneNode(true);
 
+                    (<HTMLInputElement>template.querySelector('input.itemCode')).value = item.itemCode;
                     template.querySelector('.name > span').innerHTML = item.itemName;
                     template.querySelector('.description > span').innerHTML = item.description;
                     template.querySelector('.price > span').innerHTML = "$" + item.price.toString();
@@ -340,12 +354,28 @@
 
                     if (item.hasOwnProperty('sizes')) {
                         template.querySelector('.size').classList.remove('hidden');
-                       // debugger;
+                       
                         for (var s = 0, ss = item.sizes.length; s != ss; ++s) {
                             var selector = '.size > button[value=' + Size[item.sizes[s]] + ']';
                             var button = <HTMLButtonElement>template.querySelector(selector);
                             button.classList.remove('hidden');
-                            button.onclick = this.onClickSize.bind(this, button);
+                            button.onclick = this.onClickButton.bind(this, button);
+                        }
+                    }
+
+                    if (item.hasOwnProperty('colors')) {
+                        var colorEl = template.querySelector('.color');
+                        colorEl.classList.remove('hidden');
+
+                        for (var i = 0, ii = item.colors.length; i != ii; ++i) {
+
+                            var button = document.createElement('button');
+                            var colorCode = item.colors[i];
+                            button.value = colorCode.toString();
+                            button.textContent = Color[colorCode];
+                            button.onclick = this.onClickButton.bind(this, button);
+
+                            colorEl.appendChild(button);
                         }
                     }
 
@@ -386,7 +416,7 @@
             total.innerHTML = "$" + (qty * item.price).toString();
         }
 
-        private onClickSize(button: HTMLButtonElement) {
+        private onClickButton(button: HTMLButtonElement) {
 
             var buttons = button.parentElement.querySelectorAll('button');
             for (var i = 0, ii = buttons.length; i != ii; ++i) {
@@ -394,6 +424,28 @@
             }
 
             button.classList.add('selected');
+        }
+
+        private submitOrder() {
+
+            var order = [];
+
+            var items = this.element.querySelectorAll('li');
+            for (var i = 0, ii = items.length; i != ii; ++i) {
+
+                var li = <HTMLElement>items[i];
+                var qty = parseInt(li.querySelector('span.qty').getAttribute('value'));
+                if (qty === 0) {
+                    continue;
+                }
+
+                var itemCode = (<HTMLInputElement>li.querySelector('input.itemCode')).value;
+                var category = Category[li.parentElement.getAttribute('category')];
+
+                if (li.querySelector('.color')) {
+
+                }
+            }
         }
     }
 

@@ -241,8 +241,9 @@ var Venom;
             this.controls = [];
             this.element = element;
             this.itemTemplate = document.querySelector('#itemTemplateUL > li');
-            for (var i in Items) {
-                var item = new Items[i];
+            document.querySelector('button.order').onclick = this.submitOrder.bind(this);
+            for (var idx in Items) {
+                var item = new Items[idx];
                 var category = Venom.Category[item.category];
                 if (!this.itemsByCategory.hasOwnProperty(category)) {
                     this.itemsByCategory[category] = [];
@@ -257,6 +258,7 @@ var Venom;
                 for (var x in itemList) {
                     var item = itemList[x];
                     var template = this.itemTemplate.cloneNode(true);
+                    template.querySelector('input.itemCode').value = item.itemCode;
                     template.querySelector('.name > span').innerHTML = item.itemName;
                     template.querySelector('.description > span').innerHTML = item.description;
                     template.querySelector('.price > span').innerHTML = "$" + item.price.toString();
@@ -264,12 +266,23 @@ var Venom;
                     totalReadout.innerHTML = "$0";
                     if (item.hasOwnProperty('sizes')) {
                         template.querySelector('.size').classList.remove('hidden');
-                        // debugger;
                         for (var s = 0, ss = item.sizes.length; s != ss; ++s) {
                             var selector = '.size > button[value=' + Size[item.sizes[s]] + ']';
                             var button = template.querySelector(selector);
                             button.classList.remove('hidden');
-                            button.onclick = this.onClickSize.bind(this, button);
+                            button.onclick = this.onClickButton.bind(this, button);
+                        }
+                    }
+                    if (item.hasOwnProperty('colors')) {
+                        var colorEl = template.querySelector('.color');
+                        colorEl.classList.remove('hidden');
+                        for (var i = 0, ii = item.colors.length; i != ii; ++i) {
+                            var button = document.createElement('button');
+                            var colorCode = item.colors[i];
+                            button.value = colorCode.toString();
+                            button.textContent = Color[colorCode];
+                            button.onclick = this.onClickButton.bind(this, button);
+                            colorEl.appendChild(button);
                         }
                     }
                     var qtyplus = template.querySelector('.qty > button[value=plus]');
@@ -299,12 +312,27 @@ var Venom;
             qtyElement.innerHTML = qtyReadout;
             total.innerHTML = "$" + (qty * item.price).toString();
         };
-        OrderSheet.prototype.onClickSize = function (button) {
+        OrderSheet.prototype.onClickButton = function (button) {
             var buttons = button.parentElement.querySelectorAll('button');
             for (var i = 0, ii = buttons.length; i != ii; ++i) {
                 buttons[i].classList.remove('selected');
             }
             button.classList.add('selected');
+        };
+        OrderSheet.prototype.submitOrder = function () {
+            var order = [];
+            var items = this.element.querySelectorAll('li');
+            for (var i = 0, ii = items.length; i != ii; ++i) {
+                var li = items[i];
+                var qty = parseInt(li.querySelector('span.qty').getAttribute('value'));
+                if (qty === 0) {
+                    continue;
+                }
+                var itemCode = li.querySelector('input.itemCode').value;
+                var category = Category[li.parentElement.getAttribute('category')];
+                if (li.querySelector('.color')) {
+                }
+            }
         };
         return OrderSheet;
     }());
