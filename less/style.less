@@ -122,12 +122,12 @@ header {
     }
 
     &.fall img { 
-        @fall-delay: 100ms;
-        &:nth-child(1) { .fall(1s); .delay(1 * @fall-delay) }
-        &:nth-child(2) { .fall(1s); .delay(2 * @fall-delay) }  
-        &:nth-child(3) { .fall(1s); .delay(3 * @fall-delay) }     
-        &:nth-child(4) { .fall(1s); .delay(4 * @fall-delay) }
-        &:nth-child(5) { .fall(1s); .delay(5 * @fall-delay) }  
+        @fall-delay: 140ms;
+        &:nth-child(1) { .fall(1.2s); .delay(1 * @fall-delay) }
+        &:nth-child(2) { .fall(1.2s); .delay(2 * @fall-delay) }  
+        &:nth-child(3) { .fall(1.2s); .delay(3 * @fall-delay) }     
+        &:nth-child(4) { .fall(1.2s); .delay(4 * @fall-delay) }
+        &:nth-child(5) { .fall(1.2s); .delay(5 * @fall-delay) }  
     }
 
     h1 {
@@ -223,7 +223,6 @@ nav {
 
             label, span { 
                 float: left;
-                margin-bottom: 10px;
             }
 
             label { 
@@ -240,7 +239,7 @@ nav {
 
             .name {
                     color: yellow;
-                    font-size: 14px;
+                   span { font-size: 14px; }
                 }
 
             .qty span { 
@@ -252,6 +251,10 @@ nav {
                 width: 36px;
                 color: cyan;
                 text-align: center;
+            }
+
+            .description span {
+                margin: 4px 0 14px 0;
             }
 
             button {
@@ -271,6 +274,16 @@ nav {
     }       
 
     img { max-width: @container-width - 300; }
+
+    button.order {
+        width: 200px;
+        padding: 20px;
+        font-size: 14px;
+        margin: 0 auto;
+        color: @color;
+        background: black;
+        border: 1px solid darkcyan;
+    }
 }
 
 @media (min-width: (@tablet-break + 1)) {

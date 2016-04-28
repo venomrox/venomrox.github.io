@@ -405,7 +405,7 @@
 
                 case 0:
                     document.querySelector('header').classList.add('fall');
-                    window.setTimeout(MainPage.levelOne, 1000);
+                    window.setTimeout(MainPage.levelOne, 1200);
                     break;
             }
         }
