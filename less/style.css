@@ -217,9 +217,13 @@ nav button.selected {
   margin-bottom: 32px;
   font-size: 16px;
 }
+.content h3 {
+  font-size: 14px;
+}
 .content p {
   line-height: 20px;
   margin-bottom: 20px;
+  font-size: 14px;
 }
 .content ul {
   list-style-type: none;
@@ -291,6 +295,20 @@ nav button.selected {
   color: cyan;
   border: 1px solid #00C43A;
 }
+.content.events h3 {
+  color: darkcyan;
+}
+.content.events p {
+  margin-bottom: 30px;
+  color: #00C43A;
+  font-size: 12px;
+}
+.content div.gearphotos {
+  width: 100%;
+}
+.content div.gearphotos img {
+  max-height: 200px;
+}
 .content img {
   max-width: 380px;
 }
@@ -354,11 +372,16 @@ nav button.selected {
     margin-bottom: 20px;
   }
   .content img {
-    max-width: 300px;
+    max-width: 200px;
   }
 }
 @media (max-width: 420px) {
   .content ul.photos img {
-    max-width: 200px;
+    max-width: 160px;
+  }
+}
+@media (max-width: 420px - 100) {
+  .content ul.photos img {
+    max-width: 140px;
   }
 }

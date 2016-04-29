@@ -132,6 +132,16 @@ var Venom;
         Color[Color["TT_BlackGrey"] = 7] = "TT_BlackGrey";
     })(Venom.Color || (Venom.Color = {}));
     var Color = Venom.Color;
+    var ColorName = {
+        Black: "Black",
+        Grey: "Grey",
+        White: "White",
+        LightPink: "Light Pink",
+        DarkPink: "Dark Pink",
+        TT_BlackPink: "Black/Pink",
+        TT_BlackBlack: "Black/Black",
+        TT_BlackGrey: "Black/Grey"
+    };
     var Items;
     (function (Items) {
         var TShirt = (function () {
@@ -292,7 +302,7 @@ var Venom;
                             var button = document.createElement('button');
                             var colorCode = item.colors[i];
                             button.value = colorCode.toString();
-                            button.textContent = Color[colorCode];
+                            button.textContent = ColorName[Color[colorCode]];
                             button.onclick = this.onClickButton.bind(this, button);
                             if (i == 0) {
                                 button.classList.add('selected');
@@ -407,7 +417,7 @@ var Venom;
             MainPage.navbar.route('home');
             MainPage.navbar.show();
             MainPage.level = 1;
-            MainPage.orderSheet = new OrderSheet(document.querySelector('.orderSheet'));
+            // MainPage.orderSheet = new OrderSheet(<HTMLElement>document.querySelector('.orderSheet'));
             document.querySelector('nav > h2').onclick = MainPage.playMusic;
         };
         MainPage.playMusic = function () {

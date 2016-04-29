@@ -189,6 +189,17 @@
         TT_BlackGrey
     }
 
+    var ColorName = {
+        Black: "Black",
+        Grey: "Grey",
+        White: "White",
+        LightPink: "Light Pink",
+        DarkPink: "Dark Pink",
+        TT_BlackPink: "Black/Pink",
+        TT_BlackBlack: "Black/Black",
+        TT_BlackGrey: "Black/Grey"
+    }
+
     interface IStoreItem {
         itemCode: string;
         itemName: string;
@@ -382,7 +393,7 @@
                             var button = document.createElement('button');
                             var colorCode = item.colors[i];
                             button.value = colorCode.toString();
-                            button.textContent = Color[colorCode];
+                            button.textContent = ColorName[Color[colorCode]];
                             button.onclick = this.onClickButton.bind(this, button);
 
                             if (i == 0) {
@@ -544,7 +555,7 @@
             MainPage.navbar.show();
             MainPage.level = 1;
 
-            MainPage.orderSheet = new OrderSheet(<HTMLElement>document.querySelector('.orderSheet'));
+            // MainPage.orderSheet = new OrderSheet(<HTMLElement>document.querySelector('.orderSheet'));
             (<HTMLElement>document.querySelector('nav > h2')).onclick = MainPage.playMusic;
         }
 
