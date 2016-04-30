@@ -372,29 +372,41 @@ var Venom;
             var total = 0;
             var qty = 0;
             var nl = "%0D%0A";
-            var body = "VENOM - ORDER DETAILS" + nl + nl;
+            var body = "VENOM - ORDER DETAILS" + nl;
+            body += nl + "Please include your name, shipping address, and payment info with this email (all major credit cards and PayPal are accepted).";
+            body += nl + "Orders are generally processed and shipped within 1- 2 business days.";
+            body += nl + "If you have any questions about an item or your order in general, include your questions and comments below and we will contact you prior to fulfilling your order. " + nl + nl;
             for (var i = 0, ii = orders.length; i != ii; ++i) {
                 var order = orders[i];
-                body += "ITEM #: " + order.itemCode + nl;
-                body += "ITEM: " + order.itemName + nl;
+                body += " ITEM #: " + order.itemCode + nl;
+                body += " ITEM: " + order.itemName + nl;
                 if (order.hasOwnProperty('size')) {
-                    body += "SIZE: " + order.size;
+                    body += " SIZE: " + order.size;
                 }
                 if (order.hasOwnProperty('color')) {
-                    body += "COLOR: " + order.color;
+                    body += " COLOR: " + order.color;
                 }
-                body += "QTY: " + order.qty.toString() + nl;
-                body += "TOTAL: " + "$" + order.total.toString() + nl + nl;
+                body += " QTY: " + order.qty.toString() + nl;
+                body += " TOTAL: " + "$" + order.total.toString() + nl + nl;
                 qty += order.qty;
                 total += order.total;
             }
-            body += nl + "ITEMS: " + qty;
-            body += nl + "TOTAL: " + "$" + total;
+            body += nl + " TOTAL ITEMS: " + qty;
+            body += nl + " TOTAL PRICE: " + "$" + total;
             body += nl + nl;
-            body += "Please include your name, shipping address, and payment info with this email. Orders are generally processed and shipped within 1-2 business days." + nl;
             body += nl + "Your name:" + nl + nl;
             body += nl + "Shipping address: " + nl + nl;
-            body += nl + "Credit card info or PayPal email: " + nl + nl;
+            body += nl + "Credit card info or PayPal email address" + nl + nl;
+            body += nl + "Credit Card Info";
+            body += nl + "  Card Type: ";
+            body += nl + "  Card Number: ";
+            body += nl + "  Exp Date: ";
+            body += nl + "  Security Code: ";
+            body += nl + "  Billing Zip: ";
+            body += nl + nl + "(OR) PayPal Info";
+            body += nl + "  PayPal email address: ";
+            body += nl + nl + "Questions or comments: ";
+            body += nl + nl;
             var mailto = SiteConfig.mailToURL + "?subject=" + encodeURIComponent("VENOM ORDER") + "&body=" + body;
             window.location.href = mailto;
         };
@@ -425,15 +437,15 @@ var Venom;
             MainPage.navbar.show();
             MainPage.level = 1;
             MainPage.orderSheet = new OrderSheet(document.querySelector('.orderSheet'));
-            document.querySelector('nav > h2').onclick = MainPage.playMusic;
+            //(<HTMLElement>document.querySelector('nav > h2')).onclick = MainPage.playMusic;
+            var audio = new Audio('./sounds/crytough.wav');
+            audio.play();
         };
         MainPage.playMusic = function () {
             if (MainPage.isMusicPlaying) {
                 return;
             }
             MainPage.isMusicPlaying = true;
-            var audio = new Audio('./sounds/crytough.wav');
-            audio.play();
         };
         MainPage.level = 0;
         MainPage.isMusicPlaying = false;
