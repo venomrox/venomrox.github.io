@@ -584,7 +584,7 @@
             MainPage.navbar.show();
             MainPage.level = 1;
 
-             MainPage.orderSheet = new OrderSheet(<HTMLElement>document.querySelector('.orderSheet'));
+            MainPage.orderSheet = new OrderSheet(<HTMLElement>document.querySelector('.orderSheet'));
             (<HTMLElement>document.querySelector('nav > h2')).onclick = MainPage.playMusic;
         }
 
