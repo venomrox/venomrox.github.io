@@ -578,8 +578,6 @@
 
         private static levelOne(): void {
 
-            var audio = new Audio('./sounds/crytough.wav');
-            audio.play();
             document.querySelector('header').classList.add('hidden');
 
             MainPage.navbar.route('home');
@@ -587,9 +585,8 @@
             MainPage.level = 1;
 
              MainPage.orderSheet = new OrderSheet(<HTMLElement>document.querySelector('.orderSheet'));
-            //(<HTMLElement>document.querySelector('nav > h2')).onclick = MainPage.playMusic;
+            (<HTMLElement>document.querySelector('nav > h2')).onclick = MainPage.playMusic;
         }
-
 
         private static isMusicPlaying: boolean = false;
         private static playMusic(): void {
@@ -599,6 +596,9 @@
             }
 
             MainPage.isMusicPlaying = true;
+            var audio = new Audio('./sounds/crytough.wav');
+            audio.play();
+
         }
     }
 }
