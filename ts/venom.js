@@ -432,14 +432,14 @@ var Venom;
             }
         };
         MainPage.levelOne = function () {
+            var audio = new Audio('./sounds/crytough.wav');
+            audio.play();
             document.querySelector('header').classList.add('hidden');
             MainPage.navbar.route('home');
             MainPage.navbar.show();
             MainPage.level = 1;
             MainPage.orderSheet = new OrderSheet(document.querySelector('.orderSheet'));
             //(<HTMLElement>document.querySelector('nav > h2')).onclick = MainPage.playMusic;
-            var audio = new Audio('./sounds/crytough.wav');
-            audio.play();
         };
         MainPage.playMusic = function () {
             if (MainPage.isMusicPlaying) {
