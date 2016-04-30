@@ -67,6 +67,7 @@ body {
   font-family: "C64 Pro Mono Local";
   background: black;
   color: #00C43A;
+  margin: 2px;
 }
 header {
   padding: 80px 0;
@@ -303,6 +304,16 @@ nav button.selected {
   color: #00C43A;
   font-size: 12px;
 }
+.content .orderSheet {
+  margin-top: 32px;
+}
+.content .orderSheet h3 {
+  font-size: 16px;
+  color: yellow;
+}
+.content .orderSheet img {
+  max-width: 100%;
+}
 .content div.gearphotos {
   width: 100%;
 }
@@ -378,6 +389,9 @@ nav button.selected {
 @media (max-width: 420px) {
   .content ul.photos img {
     max-width: 160px;
+  }
+  .content ul.gear {
+    padding: 10px;
   }
 }
 @media (max-width: 420px - 100) {

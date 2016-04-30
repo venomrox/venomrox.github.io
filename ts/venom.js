@@ -117,8 +117,7 @@ var Venom;
     (function (Category) {
         Category[Category["Shirts"] = 0] = "Shirts";
         Category[Category["Hats"] = 1] = "Hats";
-        Category[Category["Visors"] = 2] = "Visors";
-        Category[Category["Accessories"] = 3] = "Accessories";
+        Category[Category["Accessories"] = 2] = "Accessories";
     })(Venom.Category || (Venom.Category = {}));
     var Category = Venom.Category;
     (function (Color) {
@@ -318,7 +317,9 @@ var Venom;
                 }
                 var h3 = document.createElement("h3");
                 h3.innerHTML = c;
+                var img = document.querySelector('#templates > img.merch[category=' + c + ']');
                 this.element.appendChild(h3);
+                this.element.appendChild(img);
                 this.element.appendChild(ul);
             }
         }
@@ -356,7 +357,7 @@ var Venom;
                 var itemCode = li.querySelector('input.itemCode').value;
                 var itemName = li.querySelector('.name > span').innerHTML;
                 var category = Category[li.parentElement.getAttribute('category')];
-                var price = parseInt(li.querySelector('.price > span').innerHTML);
+                var price = parseInt(li.querySelector('.price > span').innerHTML.replace("$", ""));
                 var colorEl = li.querySelector('.color > button.selected');
                 var sizeEl = li.querySelector('.size > button.selected');
                 var itemOrder = {
@@ -369,8 +370,9 @@ var Venom;
                 orders.push(itemOrder);
             }
             var total = 0;
-            var nl = "\n";
-            var body = "VENOM - ORDER DETAILS \n\n";
+            var qty = 0;
+            var nl = "%0D%0A";
+            var body = "VENOM - ORDER DETAILS" + nl + nl;
             for (var i = 0, ii = orders.length; i != ii; ++i) {
                 var order = orders[i];
                 body += "ITEM #: " + order.itemCode + nl;
@@ -382,12 +384,17 @@ var Venom;
                     body += "COLOR: " + order.color;
                 }
                 body += "QTY: " + order.qty.toString() + nl;
-                body += "TOTAL: " + "$" + order.total.toString() + nl;
-                body += "\n";
+                body += "TOTAL: " + "$" + order.total.toString() + nl + nl;
+                qty += order.qty;
                 total += order.total;
             }
-            body += "\n" + "ITEMS: " + orders.length;
-            body += "\n" + "TOTAL: " + "$" + total;
+            body += nl + "ITEMS: " + qty;
+            body += nl + "TOTAL: " + "$" + total;
+            body += nl + nl;
+            body += "Please include your name, shipping address, and payment info with this email. Orders are generally processed and shipped within 1-2 business days." + nl;
+            body += nl + "Your name:" + nl + nl;
+            body += nl + "Shipping address: " + nl + nl;
+            body += nl + "Credit card info or PayPal email: " + nl + nl;
             var mailto = SiteConfig.mailToURL + "?subject=" + encodeURIComponent("VENOM ORDER") + "&body=" + body;
             window.location.href = mailto;
         };
@@ -417,7 +424,7 @@ var Venom;
             MainPage.navbar.route('home');
             MainPage.navbar.show();
             MainPage.level = 1;
-            // MainPage.orderSheet = new OrderSheet(<HTMLElement>document.querySelector('.orderSheet'));
+            MainPage.orderSheet = new OrderSheet(document.querySelector('.orderSheet'));
             document.querySelector('nav > h2').onclick = MainPage.playMusic;
         };
         MainPage.playMusic = function () {

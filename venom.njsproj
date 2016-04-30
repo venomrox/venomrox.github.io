@@ -35,6 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="images\content\photo.006.jpg" />
+    <Content Include="images\merch\general\merch.accessories.001.jpg" />
+    <Content Include="images\merch\general\merch.hats.001.jpg" />
+    <Content Include="images\merch\general\merch.shirts.001.jpg" />
+    <Content Include="images\merch\hats\hat001.png" />
     <Content Include="ts\venom.js.map" />
     <None Include="compilerconfig.json" />
     <Content Include="compilerconfig.json.defaults">
@@ -86,6 +90,7 @@
     <Folder Include="images\content\" />
     <Folder Include="images\merch\" />
     <Folder Include="images\merch\general\" />
+    <Folder Include="images\merch\hats\" />
     <Folder Include="less\" />
     <Folder Include="data\" />
     <Folder Include="sounds\" />
