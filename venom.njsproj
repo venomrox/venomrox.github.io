@@ -40,6 +40,7 @@
     <Content Include="images\merch\general\merch.shirts.001.jpg" />
     <Content Include="images\merch\hats\hat001.png" />
     <Content Include="index.devtest.html" />
+    <Content Include="sounds\crytough.wav" />
     <Content Include="ts\venom.dev.js.map" />
     <Content Include="ts\venom.js.map" />
     <None Include="compilerconfig.json" />
@@ -96,10 +97,12 @@
     <Folder Include="images\merch\hats\" />
     <Folder Include="less\" />
     <Folder Include="data\" />
+    <Folder Include="tools\" />
     <Folder Include="sounds\" />
     <Folder Include="ts\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="tools\analytics.js" />
     <Compile Include="ts\venom.dev.js" />
     <Compile Include="ts\venom.js" />
   </ItemGroup>
