@@ -265,6 +265,18 @@ var Venom;
             return YetiCup;
         }());
         Items.YetiCup = YetiCup;
+        var Hugger = (function () {
+            function Hugger() {
+                this.itemCode = "HUGGER001";
+                this.itemName = "Hugger";
+                this.description = "Keep your drinks cold at the next Venom show with this cool hugger";
+                this.category = Category.Accessories;
+                this.price = 5;
+                this.paypalID = "EBXTKT5DLZ43Y";
+            }
+            return Hugger;
+        }());
+        Items.Hugger = Hugger;
     })(Items = Venom.Items || (Venom.Items = {}));
     var OrderSheet = (function () {
         function OrderSheet(element) {

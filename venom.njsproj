@@ -34,6 +34,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="favicon.png" />
     <Content Include="images\content\photo.006.jpg" />
     <Content Include="images\merch\general\merch.accessories.001.jpg" />
     <Content Include="images\merch\general\merch.hats.001.jpg" />
@@ -75,7 +76,6 @@
     </Content>
     <Content Include=".gitattributes" />
     <Content Include=".gitignore" />
-    <Content Include="favicon.ico" />
     <Content Include="images\logo-large.png" />
     <Content Include="images\logo-medium.png" />
     <Content Include="images\logo-small.png" />

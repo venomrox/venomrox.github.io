@@ -323,6 +323,16 @@
             public price: number = 80;
             public paypalID: string = "MLKTFJ3SPGHYL";
         }
+
+        export class Hugger {
+
+            public itemCode: string = "HUGGER001";
+            public itemName: string = "Hugger";
+            public description: string = "Keep your drinks cold at the next Venom show with this cool hugger";
+            public category: Category = Category.Accessories;
+            public price: number = 5;
+            public paypalID: string = "EBXTKT5DLZ43Y";
+        }
     }
 
     export class OrderSheet {
