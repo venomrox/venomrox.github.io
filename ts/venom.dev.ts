@@ -1,4 +1,4 @@
-﻿namespace Venom {
+﻿namespace VenomDev {
 
     export class SiteConfig {
 
@@ -341,7 +341,7 @@
             this.itemTemplate = <HTMLElement>document.querySelector('#itemTemplateUL > li');
 
 
-            // (<HTMLElement>document.querySelector('button.order')).onclick = this.submitOrder.bind(this);
+            (<HTMLElement>document.querySelector('button.order')).onclick = this.submitOrder.bind(this);
 
             for (var idx in Items) {
 
@@ -373,7 +373,7 @@
                     //var totalReadout = <HTMLElement>template.querySelector('.total > span');
                     //totalReadout.innerHTML = "$0";
 
-                    var paypalform = <HTMLFormElement>document.querySelector("#paypalform > form[target='paypal']").cloneNode(true);
+                    var paypalform = <HTMLFormElement>document.querySelector("form[target='paypal']").cloneNode(true);
                     var inputID = <HTMLInputElement>paypalform.querySelector("input[name='hosted_button_id']");
                     inputID.value = item.paypalID;
                     template.appendChild(paypalform);
@@ -392,17 +392,13 @@
                             button.onclick = this.onClickSizeButton.bind(this, button, paypalform);
                         }
                     }
-                    else {
-                        paypalform.querySelector("input[name='on0']").remove();
-                        paypalform.querySelector("select[name='os0']").remove();
-                    }
 
                     if (item.hasOwnProperty('colors')) {
                         var colorEl = template.querySelector('.color');
                         colorEl.classList.remove('hidden');
 
                         for (var i = 0, ii = item.colors.length; i != ii; ++i) {
-
+                            
                             var button = document.createElement('button');
                             var colorCode = item.colors[i];
                             button.value = Color[colorCode];
@@ -416,16 +412,14 @@
                             colorEl.appendChild(button);
                         }
                     }
-                    else {
-                        paypalform.querySelector("input[name='on1']").remove();
-                        paypalform.querySelector("select[name='os1']").remove();
-                    }
+
+                   
 
                     //var qtyplus = <HTMLButtonElement>template.querySelector('.qty > button[value=plus]');
                     //var qtyminus = <HTMLButtonElement>template.querySelector('.qty > button[value=minus]');
                     //qtyplus.onclick = this.onClickQty.bind(this, qtyplus, item, totalReadout, template, paypalform);
                     //qtyminus.onclick = this.onClickQty.bind(this, qtyminus, item, totalReadout, template, paypalform);
-
+                    
                     ul.appendChild(template);
                 }
 
@@ -433,7 +427,7 @@
                 h3.innerHTML = c;
 
                 var img = document.querySelector('#templates > img.merch[category=' + c + ']');
-
+                
                 this.element.appendChild(h3);
                 this.element.appendChild(img);
                 this.element.appendChild(ul);
@@ -460,18 +454,18 @@
             qtyElement.innerHTML = qtyReadout;
 
             total.innerHTML = "$" + (qty * item.price).toString();
-
+            
         }
 
         private onClickSizeButton(button: HTMLButtonElement, form: HTMLFormElement) {
-
+            
             var options = <HTMLSelectElement>form.querySelectorAll("select[name='os0'] > option");
             this.updateOption(button, options);
             this.onClickButton(button);
         }
 
         private onClickColorButton(button: HTMLButtonElement, form: HTMLFormElement) {
-
+            
             var options = form.querySelectorAll("select[name='os1'] > option");
             this.updateOption(button, options);
             this.onClickButton(button);

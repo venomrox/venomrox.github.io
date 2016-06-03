@@ -1,12 +1,12 @@
-var Venom;
-(function (Venom) {
+var VenomDev;
+(function (VenomDev) {
     var SiteConfig = (function () {
         function SiteConfig() {
         }
         SiteConfig.mailToURL = "mailto:orders@venomrox.com";
         return SiteConfig;
     }());
-    Venom.SiteConfig = SiteConfig;
+    VenomDev.SiteConfig = SiteConfig;
     var ScreenSaver = (function () {
         function ScreenSaver() {
         }
@@ -24,7 +24,7 @@ var Venom;
         ScreenSaver.timeout = 10000;
         return ScreenSaver;
     }());
-    Venom.ScreenSaver = ScreenSaver;
+    VenomDev.ScreenSaver = ScreenSaver;
     var TerminalWriter = (function () {
         function TerminalWriter(element) {
             this.element = element;
@@ -69,7 +69,7 @@ var Venom;
         TerminalWriter.instances = [];
         return TerminalWriter;
     }());
-    Venom.TerminalWriter = TerminalWriter;
+    VenomDev.TerminalWriter = TerminalWriter;
     var NavBar = (function () {
         function NavBar(element) {
             this.element = element;
@@ -105,21 +105,21 @@ var Venom;
         };
         return NavBar;
     }());
-    Venom.NavBar = NavBar;
+    VenomDev.NavBar = NavBar;
     (function (Size) {
         Size[Size["S"] = 0] = "S";
         Size[Size["M"] = 1] = "M";
         Size[Size["L"] = 2] = "L";
         Size[Size["XL"] = 3] = "XL";
         Size[Size["XXL"] = 4] = "XXL";
-    })(Venom.Size || (Venom.Size = {}));
-    var Size = Venom.Size;
+    })(VenomDev.Size || (VenomDev.Size = {}));
+    var Size = VenomDev.Size;
     (function (Category) {
         Category[Category["Shirts"] = 0] = "Shirts";
         Category[Category["Hats"] = 1] = "Hats";
         Category[Category["Accessories"] = 2] = "Accessories";
-    })(Venom.Category || (Venom.Category = {}));
-    var Category = Venom.Category;
+    })(VenomDev.Category || (VenomDev.Category = {}));
+    var Category = VenomDev.Category;
     (function (Color) {
         Color[Color["Black"] = 0] = "Black";
         Color[Color["Grey"] = 1] = "Grey";
@@ -131,8 +131,8 @@ var Venom;
         Color[Color["TT_BlackGrey"] = 7] = "TT_BlackGrey";
         Color[Color["Teal"] = 8] = "Teal";
         Color[Color["Purple"] = 9] = "Purple";
-    })(Venom.Color || (Venom.Color = {}));
-    var Color = Venom.Color;
+    })(VenomDev.Color || (VenomDev.Color = {}));
+    var Color = VenomDev.Color;
     var ColorName = {
         Black: "Black",
         Grey: "Grey",
@@ -265,14 +265,14 @@ var Venom;
             return YetiCup;
         }());
         Items.YetiCup = YetiCup;
-    })(Items = Venom.Items || (Venom.Items = {}));
+    })(Items = VenomDev.Items || (VenomDev.Items = {}));
     var OrderSheet = (function () {
         function OrderSheet(element) {
             this.itemsByCategory = {};
             this.controls = [];
             this.element = element;
             this.itemTemplate = document.querySelector('#itemTemplateUL > li');
-            // (<HTMLElement>document.querySelector('button.order')).onclick = this.submitOrder.bind(this);
+            document.querySelector('button.order').onclick = this.submitOrder.bind(this);
             for (var idx in Items) {
                 var item = new Items[idx];
                 var category = Category[item.category];
@@ -295,7 +295,7 @@ var Venom;
                     template.querySelector('.price > span').innerHTML = "$" + item.price.toString();
                     //var totalReadout = <HTMLElement>template.querySelector('.total > span');
                     //totalReadout.innerHTML = "$0";
-                    var paypalform = document.querySelector("#paypalform > form[target='paypal']").cloneNode(true);
+                    var paypalform = document.querySelector("form[target='paypal']").cloneNode(true);
                     var inputID = paypalform.querySelector("input[name='hosted_button_id']");
                     inputID.value = item.paypalID;
                     template.appendChild(paypalform);
@@ -311,10 +311,6 @@ var Venom;
                             button.onclick = this.onClickSizeButton.bind(this, button, paypalform);
                         }
                     }
-                    else {
-                        paypalform.querySelector("input[name='on0']").remove();
-                        paypalform.querySelector("select[name='os0']").remove();
-                    }
                     if (item.hasOwnProperty('colors')) {
                         var colorEl = template.querySelector('.color');
                         colorEl.classList.remove('hidden');
@@ -329,10 +325,6 @@ var Venom;
                             }
                             colorEl.appendChild(button);
                         }
-                    }
-                    else {
-                        paypalform.querySelector("input[name='on1']").remove();
-                        paypalform.querySelector("select[name='os1']").remove();
                     }
                     //var qtyplus = <HTMLButtonElement>template.querySelector('.qty > button[value=plus]');
                     //var qtyminus = <HTMLButtonElement>template.querySelector('.qty > button[value=minus]');
@@ -453,7 +445,7 @@ var Venom;
         };
         return OrderSheet;
     }());
-    Venom.OrderSheet = OrderSheet;
+    VenomDev.OrderSheet = OrderSheet;
     var MainPage = (function () {
         function MainPage() {
         }
@@ -492,7 +484,7 @@ var Venom;
         MainPage.isMusicPlaying = false;
         return MainPage;
     }());
-    Venom.MainPage = MainPage;
-})(Venom || (Venom = {}));
+    VenomDev.MainPage = MainPage;
+})(VenomDev || (VenomDev = {}));
 // Venom.MainPage.Init(); 
-//# sourceMappingURL=venom.js.map
+//# sourceMappingURL=venom.dev.js.map

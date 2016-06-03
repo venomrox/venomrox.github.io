@@ -332,6 +332,9 @@ nav button.selected {
   background: black;
   border: 1px solid #00C43A;
 }
+.content .viewcart {
+  margin: 30px;
+}
 @media (min-width: 801px) {
   nav h2 {
     display: inline;

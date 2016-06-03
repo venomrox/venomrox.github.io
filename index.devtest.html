@@ -103,23 +103,7 @@
 
 		</div>
 
-		<div class="viewcart">
-			<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-				<!-- Identify your business so that you can collect the payments. -->
-				<input type="hidden" name="business" value="orders@venomrox.com">
-
-				<!-- Specify a PayPal Shopping Cart View Cart button. -->
-				<input type="hidden" name="cmd" value="_cart">
-				<input type="hidden" name="display" value="1">
-
-				<!-- Display the View Cart button. -->
-				<input type="image" name="submit"
-					   src="https://www.paypalobjects.com/en_US/i/btn/btn_viewcart_LG.gif"
-					   alt="PayPal - The safer, easier way to pay online">
-				<img alt="" width="1" height="1"
-					 src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif">
-			</form>
-		</div>
+		<button class="order">Place Order</button>
 	</div>
 
 	<div class="hidden" id="templates">
@@ -170,7 +154,7 @@
 			</li>
 		</ul>
 
-		<div id="paypalform">
+		
 			<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
 				<input type="hidden" name="cmd" value="_s-xclick">
 				<input type="hidden" name="hosted_button_id" value="7QWD3DENXDT66">
@@ -181,7 +165,7 @@
 							<select name="os0">
 								<option value="S">S </option>
 								<option value="M">M </option>
-								<option value="L" selected>L </option>
+								<option value="L">L </option>
 								<option value="XL">XL </option>
 								<option value="XXL">XXL </option>
 							</select>
@@ -191,7 +175,7 @@
 					<tr>
 						<td>
 							<select name="os1">
-								<option value="Black" selected>Black </option>
+								<option value="Black">Black </option>
 								<option value="Grey">Grey </option>
 								<option value="White">White </option>
 								<option value="LightPink">LightPink </option>
@@ -205,16 +189,15 @@
 				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 			</form>
-		</div>
-	
+
 
 		<img class="merch" category="Hats" src="./images/merch/general/merch.hats.001.jpg" />
 		<img class="merch" category="Shirts" src="./images/merch/general/merch.shirts.001.jpg" />
 		<img class="merch" category="Accessories" src="./images/merch/general/merch.accessories.001.jpg" />
 	</div>
 
-	<script src="./ts/venom.js"></script>
-	<script type="text/javascript">Venom.MainPage.Init()</script>
+	<script src="./ts/venom.dev.js"></script>
+	<script type="text/javascript">VenomDev.MainPage.Init()</script>
 
 </body>
 </html>
