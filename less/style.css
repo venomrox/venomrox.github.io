@@ -391,13 +391,19 @@ nav button.selected {
   .content ul.photos li {
     margin-bottom: 20px;
   }
-  .content img {
+  .content ul.photos img {
     max-width: 200px;
+  }
+  .content ul.photos li.wide img {
+    max-width: 400px;
   }
 }
 @media (max-width: 420px) {
   .content ul.photos img {
     max-width: 160px;
+  }
+  .content ul.photos li.wide img {
+    max-width: 320px;
   }
   .content ul.gear {
     padding: 10px;
@@ -406,5 +412,8 @@ nav button.selected {
 @media (max-width: 420px - 100) {
   .content ul.photos img {
     max-width: 140px;
+  }
+  .content ul.photos li.wide img {
+    max-width: 280px;
   }
 }
