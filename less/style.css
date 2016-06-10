@@ -239,6 +239,12 @@ nav button.selected {
   text-align: center;
   margin-bottom: 20px;
 }
+.content ul.photos li.wide {
+  width: 100%;
+}
+.content ul.photos li.wide img {
+  max-width: 760px;
+}
 .content ul.gear {
   padding: 20px;
   font-size: 12px;
