@@ -1,9 +1,28 @@
 {
-  "name": "coffeytech",
-  "version": "0.0.0",
-  "description": "Coffeytech LLC",
-  "author": {
-    "name": "Kenneth Reilly",
-    "email": "kenreilly@xscript.io"
+  "name": "venomrox.github.io",
+  "version": "1.0.0",
+  "description": "Venom website!",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/venomrox/venomrox.github.io.git"
+  },
+  "keywords": [
+    "Venom"
+  ],
+  "author": "Kenneth Reilly <kenneth.reilly@hotmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/venomrox/venomrox.github.io/issues"
+  },
+  "homepage": "https://github.com/venomrox/venomrox.github.io#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.3.0",
+    "gulp-typescript": "^3.1.6",
+    "typescript": "^2.2.2"
   }
 }

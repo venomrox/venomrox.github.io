@@ -3,9 +3,9 @@ var Venom;
     var SiteConfig = (function () {
         function SiteConfig() {
         }
-        SiteConfig.mailToURL = "mailto:orders@venomrox.com";
         return SiteConfig;
     }());
+    SiteConfig.mailToURL = "mailto:orders@venomrox.com";
     Venom.SiteConfig = SiteConfig;
     var ScreenSaver = (function () {
         function ScreenSaver() {
@@ -21,9 +21,9 @@ var Venom;
         };
         ScreenSaver.clear = function () {
         };
-        ScreenSaver.timeout = 10000;
         return ScreenSaver;
     }());
+    ScreenSaver.timeout = 10000;
     Venom.ScreenSaver = ScreenSaver;
     var TerminalWriter = (function () {
         function TerminalWriter(element) {
@@ -64,11 +64,11 @@ var Venom;
             writer.init();
             return writer;
         };
-        TerminalWriter.refreshRate = 40;
-        TerminalWriter.selector = ".terminal-writer";
-        TerminalWriter.instances = [];
         return TerminalWriter;
     }());
+    TerminalWriter.refreshRate = 40;
+    TerminalWriter.selector = ".terminal-writer";
+    TerminalWriter.instances = [];
     Venom.TerminalWriter = TerminalWriter;
     var NavBar = (function () {
         function NavBar(element) {
@@ -106,20 +106,21 @@ var Venom;
         return NavBar;
     }());
     Venom.NavBar = NavBar;
+    var Size;
     (function (Size) {
         Size[Size["S"] = 0] = "S";
         Size[Size["M"] = 1] = "M";
         Size[Size["L"] = 2] = "L";
         Size[Size["XL"] = 3] = "XL";
         Size[Size["XXL"] = 4] = "XXL";
-    })(Venom.Size || (Venom.Size = {}));
-    var Size = Venom.Size;
+    })(Size = Venom.Size || (Venom.Size = {}));
+    var Category;
     (function (Category) {
         Category[Category["Shirts"] = 0] = "Shirts";
         Category[Category["Hats"] = 1] = "Hats";
         Category[Category["Accessories"] = 2] = "Accessories";
-    })(Venom.Category || (Venom.Category = {}));
-    var Category = Venom.Category;
+    })(Category = Venom.Category || (Venom.Category = {}));
+    var Color;
     (function (Color) {
         Color[Color["Black"] = 0] = "Black";
         Color[Color["Grey"] = 1] = "Grey";
@@ -131,8 +132,7 @@ var Venom;
         Color[Color["TT_BlackGrey"] = 7] = "TT_BlackGrey";
         Color[Color["Teal"] = 8] = "Teal";
         Color[Color["Purple"] = 9] = "Purple";
-    })(Venom.Color || (Venom.Color = {}));
-    var Color = Venom.Color;
+    })(Color = Venom.Color || (Venom.Color = {}));
     var ColorName = {
         Black: "Black",
         Grey: "Grey",
@@ -500,11 +500,10 @@ var Venom;
             var audio = new Audio('./sounds/crytough.wav');
             audio.play();
         };
-        MainPage.level = 0;
-        MainPage.isMusicPlaying = false;
         return MainPage;
     }());
+    MainPage.level = 0;
+    MainPage.isMusicPlaying = false;
     Venom.MainPage = MainPage;
 })(Venom || (Venom = {}));
 // Venom.MainPage.Init(); 
-//# sourceMappingURL=venom.js.map

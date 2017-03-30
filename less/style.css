@@ -1,4 +1,4 @@
-﻿@font-face {
+@font-face {
   font-family: "C64 Pro Mono Local";
   src: url("../fonts/C64_Pro_Mono-STYLE.ttf") format("truetype");
 }
@@ -243,6 +243,7 @@ nav button.selected {
   width: 100%;
 }
 .content ul.photos li.wide img {
+  width: 100%;
   max-width: 760px;
 }
 .content ul.gear {
