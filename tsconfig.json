@@ -1,0 +1,10 @@
+{
+	"include": ["./ts/**/*"],
+	"compilerOptions": {
+		"module": "es6",
+		"target": "esnext",
+		"outDir": "./js",
+		"sourceMap": true,
+		"watch": true
+	}
+}
