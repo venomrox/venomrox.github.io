@@ -160,6 +160,13 @@ namespace Venom {
                 MainPage.pages[page].classList[fn]('hidden')
                 MainPage.nav.classList.remove('open')
             }
+
+            if (button.name == 'game') {
+                Game.ready()
+            }
+            else {
+                Game.power_off()
+            }
         }
     }
 }

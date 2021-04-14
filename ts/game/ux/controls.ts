@@ -8,17 +8,23 @@ export class Controls {
     static parsed_direction: Input = Input.NONE
     static jump: boolean = false
 
-    static on_drag_end = (ev: DragEvent) => {
+    static last_event: TouchEvent = null
 
-        debugger
-        if (Math.abs(ev.offsetX) > Math.abs(ev.offsetY)) {
-            Controls.parsed_direction = (ev.offsetX > 0) 
-                ? Input.RIGHT : Input.LEFT
-        }
-        else if (Math.abs(ev.offsetX) > Math.abs(ev.offsetY)) {
-            Controls.parsed_direction = (ev.offsetY > 0)
-                ? Input.DOWN : Input.UP
-        }
+    static on_touch_start = (ev: TouchEvent) => { Controls.last_event = ev }
+
+    static on_touch_end = (ev: TouchEvent) => {
+
+        if (!ev.changedTouches.length || !Controls.last_event.changedTouches.length) return
+
+        var a = Controls.last_event.changedTouches[0]
+        var b = ev.changedTouches[0]
+
+        var dx = b.clientX - a.clientX
+        var dy = b.clientY - a.clientY
+
+        Controls.parsed_direction = (Math.abs(dx) > Math.abs(dy))
+            ? ((dx > 0) ? Input.RIGHT : Input.LEFT)
+            : ((dy > 0) ? Input.DOWN : Input.UP)
     }
 
     static on_tap = (ev: Event) => { Controls.jump = true }

@@ -12,6 +12,8 @@ export class SnakeSegment implements IGameObject {
 
     public color(): string {
 
+        return '#00C43A';
+
         // let colors = [ 
         //     "#FF0000", "#FF9966", 
         //     "#FFFA66", "#66FF66",

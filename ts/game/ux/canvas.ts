@@ -1,7 +1,7 @@
 ﻿export abstract class Canvas {
 
-    public static width: number = 640;
-    public static height: number = 400;
+    public static width: number = 200;
+    public static height: number = 200;
     public static context: CanvasRenderingContext2D;
 
     public static init(el: HTMLCanvasElement) {
