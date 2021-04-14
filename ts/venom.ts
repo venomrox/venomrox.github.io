@@ -1,4 +1,5 @@
 ﻿import * as VenomStore from './store.js'
+import { Game } from './game/game.js';
 
 namespace Venom {
 
@@ -35,6 +36,7 @@ namespace Venom {
             this.element.appendChild(this.cursor.cloneNode(true));
 
             this.run();
+            Game.init()
         }
 
         protected run() {

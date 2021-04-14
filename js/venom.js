@@ -1,4 +1,5 @@
 import * as VenomStore from './store.js';
+import { Game } from './game/game.js';
 var Venom;
 (function (Venom) {
     class TerminalWriter {
@@ -15,6 +16,7 @@ var Venom;
             this.cursor.innerHTML = "_";
             this.element.appendChild(this.cursor.cloneNode(true));
             this.run();
+            Game.init();
         }
         run() {
             for (var i = 0, ii = this.text.length; i != ii; ++i) {

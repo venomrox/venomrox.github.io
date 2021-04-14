@@ -19,11 +19,11 @@ export enum ScreenEdge {
 }    
 
 export enum Direction {
+	NONE,
 	UP,
 	DOWN,
 	LEFT,
-	RIGHT,
-	NONE
+	RIGHT
 }
 
 export enum Speed {

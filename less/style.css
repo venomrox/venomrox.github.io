@@ -39,6 +39,7 @@ body {
 }
 
 .curtain {
+    overscroll-behavior: contain;
     overflow: hidden;
     perspective: 20vh;
     position: absolute;
@@ -48,6 +49,8 @@ body {
 }
 
 .curtain div {
+
+    overscroll-behavior: contain;
     position: absolute;
     height: 100vh;
     width: 100vw;
@@ -256,7 +259,7 @@ main:not(.hidden) > img {
     animation: fade-in 180ms linear forwards;
 }
 
-main:not(.hidden) > h2, main:not(.hidden) > h3 {
+main:not(.hidden) > h2, main:not(.hidden) > h3, main:not(.hidden) h4  {
     animation: slide-in-left 240ms ease-in forwards;
 }
 
@@ -288,9 +291,22 @@ main {
     flex-flow: column nowrap;
     align-items: center;
     justify-content: flex-start;
+
+    overscroll-behavior: contain;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-weight: 200;
+    color: var(--color-stage-tape-2);
+    font-size: 1.6em;
+    line-height: 1.6em;
+    margin: 8% 0 4% 0;
+    border-bottom: 1px solid var(--color-stand-rflect);
 }
 
 main h3 {
+    font-weight: 200;
     color: var(--color-bassamp-leds);
     font-size: 18pt;
     line-height: 36pt;
@@ -300,11 +316,12 @@ main h3 {
 p {
     color: var(--color-stage-tape-1);
     padding: 0 12%;
+    font-size: 1.1em;
 }
 
 main img.logo {
-    width: 40vw;
-    flex: .4;
+    width: 44vw;
+    flex: .32;
 }
 
 ul {
@@ -417,4 +434,42 @@ button.order {
 }
 .viewcart {
     margin: 30px;
+}
+
+.events h4 {
+    margin: 2% 0;
+}
+
+.events p {
+    margin: 1% 0;
+}
+
+main.game:not(.hidden) {
+    min-height: 80vh;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+canvas {
+    width: 90vw;
+    height: 90vw;
+    border: 1px solid var(--color-rack-reflect);
+    perspective: 1%;
+    background: var(--color-black);
+    border-radius: 1%;
+}
+
+.game h2 {
+    margin: 4% 0;
+}
+
+.game h3 {
+    margin-top: 1%;
+    margin-bottom: 4%;
+}
+
+.game p {
+
 }

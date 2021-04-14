@@ -9,10 +9,22 @@ var GameDifficulty;
 })(GameDifficulty || (GameDifficulty = {}));
 export class Game {
     static init() {
-        Canvas.init(document.querySelector("canvas"));
+        var canvas = document.querySelector("canvas");
+        Canvas.init(canvas);
         let body = document.querySelector("body");
-        body.onkeyup = Controls.on_key_up;
+        body.ondragend = Controls.on_drag_end;
+        body.ondrag = Controls.on_drag_end;
+        canvas.onclick = Game.on_tap;
+        // body.onkeyup = Controls.on_key_up              
         Game.ready();
+    }
+    static on_tap(ev) {
+        if (!Game.is_running) {
+            document.documentElement.requestFullscreen().then(() => Game.start());
+        }
+        else {
+            Controls.on_tap(ev);
+        }
     }
     static ready() {
         Console.init();
@@ -22,9 +34,9 @@ export class Game {
         GUI.draw();
         Game.player_one = new Snake({ X: 0, Y: 0 });
         Game.player_one.direction = Direction.RIGHT;
-        Game.player_two = new Snake({ X: 10, Y: 10 });
-        Game.player_two.direction = Direction.RIGHT;
-        Game.clock = new Timer(GameDifficulty.DIFFICULT, 0, Game.on_clock_tick);
+        // Game.player_two = new Snake({ X: 10, Y: 10 })        
+        // Game.player_two.direction = Direction.RIGHT
+        Game.clock = new Timer(GameDifficulty.EASY, 0, Game.on_clock_tick);
     }
     static start() {
         if (Game.is_running) {
@@ -53,7 +65,7 @@ export class Game {
     static on_clock_tick() {
         Controls.process_input();
         Game.player_one.process_turn();
-        Game.player_two.process_turn();
+        // Game.player_two.process_turn()   
         if (Game.clock.tick == ClockTick.EVEN) {
             // TODO: Move this to item randomizer class
             Game.coinCounter += 1;
@@ -88,5 +100,4 @@ Game.hi_score = 0;
 Game.is_running = false;
 // TODO: Move this to item randomizer class
 Game.coinCounter = 0;
-Game.init();
 //# sourceMappingURL=game.js.map
