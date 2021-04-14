@@ -23,6 +23,6 @@ export class Canvas {
         Canvas.context.stroke();
     }
 }
-Canvas.width = 640;
-Canvas.height = 400;
+Canvas.width = 200;
+Canvas.height = 200;
 //# sourceMappingURL=canvas.js.map

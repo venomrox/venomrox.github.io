@@ -44,16 +44,18 @@ export class Controls {
 }
 Controls.parsed_direction = Input.NONE;
 Controls.jump = false;
-Controls.on_drag_end = (ev) => {
-    debugger;
-    if (Math.abs(ev.offsetX) > Math.abs(ev.offsetY)) {
-        Controls.parsed_direction = (ev.offsetX > 0)
-            ? Input.RIGHT : Input.LEFT;
-    }
-    else if (Math.abs(ev.offsetX) > Math.abs(ev.offsetY)) {
-        Controls.parsed_direction = (ev.offsetY > 0)
-            ? Input.DOWN : Input.UP;
-    }
+Controls.last_event = null;
+Controls.on_touch_start = (ev) => { Controls.last_event = ev; };
+Controls.on_touch_end = (ev) => {
+    if (!ev.changedTouches.length || !Controls.last_event.changedTouches.length)
+        return;
+    var a = Controls.last_event.changedTouches[0];
+    var b = ev.changedTouches[0];
+    var dx = b.clientX - a.clientX;
+    var dy = b.clientY - a.clientY;
+    Controls.parsed_direction = (Math.abs(dx) > Math.abs(dy))
+        ? ((dx > 0) ? Input.RIGHT : Input.LEFT)
+        : ((dy > 0) ? Input.DOWN : Input.UP);
 };
 Controls.on_tap = (ev) => { Controls.jump = true; };
 //# sourceMappingURL=controls.js.map

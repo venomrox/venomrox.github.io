@@ -10,22 +10,21 @@ export class Game {
     static player_one: Snake
     static player_two: Snake
     static hi_score: number = 0
+
+    static is_ready: boolean = false
     static is_running: boolean = false
 
-    static init() {
-        
-        var canvas: HTMLCanvasElement = document.querySelector("canvas")
-        Canvas.init(canvas)
+    static canvas_el: HTMLCanvasElement
+    static body_el: HTMLBodyElement
 
-        let body: HTMLBodyElement = document.querySelector("body")
+    static init() {                
         
-        body.ondragend = Controls.on_drag_end
-        body.ondrag = Controls.on_drag_end
-        canvas.onclick = Game.on_tap
+        Game.canvas_el = document.querySelector("canvas")
+        Game.body_el = document.querySelector("body")
+        
         // body.onkeyup = Controls.on_key_up              
-        
-        Game.ready()
-    }              
+
+    }
 
     static on_tap(ev: Event) {
 
@@ -38,6 +37,7 @@ export class Game {
     
     static ready() {
         
+        Canvas.init(Game.canvas_el)
         Console.init()
         Board.init()
         Board.draw()
@@ -47,10 +47,23 @@ export class Game {
         Game.player_one = new Snake({ X: 0, Y: 0 })        
         Game.player_one.direction = Direction.RIGHT
 
+        Game.body_el.ontouchstart = Controls.on_touch_start
+        Game.body_el.ontouchend = Controls.on_touch_end
+        Game.body_el.onclick = Game.on_tap
+
         // Game.player_two = new Snake({ X: 10, Y: 10 })        
         // Game.player_two.direction = Direction.RIGHT
 
-        Game.clock = new Timer(GameDifficulty.EASY, 0, Game.on_clock_tick)
+        Game.clock = new Timer(GameDifficulty.MEDIUM, 0, Game.on_clock_tick)
+    }
+
+    static power_off() {
+
+        Game.body_el.ontouchstart = () => null
+        Game.body_el.ontouchend = () => null
+        Game.body_el.onclick = () => null
+        Game.clock.stop()
+        Game.is_ready = Game.is_running = false
     }
 
     static start() {

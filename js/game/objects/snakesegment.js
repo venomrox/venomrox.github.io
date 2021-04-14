@@ -6,6 +6,7 @@ export class SnakeSegment {
         this.position = position;
     }
     color() {
+        return '#00C43A';
         // let colors = [ 
         //     "#FF0000", "#FF9966", 
         //     "#FFFA66", "#66FF66",
