@@ -4,287 +4,210 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-	<title>Venom</title>
-	<meta name="description" content="Venom" />
+	<title>venomrox</title>
+	<meta name="description" content="VenomRox Music & Apparel" />
 	<meta name="keywords" content="Venom" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link href="http://venomrox.github.io/images/favicon.png" rel="shortcut icon" type="image/png" />
 	<link href="./less/style.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="less/imports.css"/>
 </head>
-
 <body>
+	<div class="curtain">
+		<div></div>
+		<div></div>
+	</div>
+	<nav class="hidden">
+		<button name="home" class="menu-v">
+			<img src="./images/brand/venom-v-trim.svg" />
+		</button>
+		<button name="game">🕹</button>
+		<button name="events">🗓</button>
+		<button name="merch">🧢</button>
+		<!-- <button class="contact">☎️</button> -->
+	</nav>
 	<header>
-		<h1>
-			<img src="./images/logo-medium-0.png" alt="V" />
-			<img src="./images/logo-medium-1.png" alt="E" />
-			<img src="./images/logo-medium-2.png" alt="N" />
-			<img src="./images/logo-medium-3.png" alt="O" />
-			<img src="./images/logo-medium-4.png" alt="M" />
-		</h1>
-		<h3 class="terminal-writer">Press any key to continue</h3>
+		<div>
+			<img src="./images/brand/venom-v.svg" alt="V" />
+			<img src="./images/brand/venom-e.svg" alt="E" />
+			<img src="./images/brand/venom-n.svg" alt="N" />
+			<img src="./images/brand/venom-o.svg" alt="O" />
+			<img src="./images/brand/venom-m.svg" alt="M" />
+		</div>
+		<h3 class="hidden terminal-writer">Press any key to continue</h3>
 	</header>
 
-	<nav class="hidden">
-		<h2>
-			<img src="./images/logo-small.png" />
-		</h2>
-		<div>
-			<button nav="home">Home</button>
-			<button nav="photos">Photos</button>
-			<button nav="events">Events</button>
-			<button nav="gear">Gear</button>
-		</div>
-	</nav>
+	<div class="content">
 
-	<div route="home" class="content hidden">
-		<h2>Welcome to venomrox.com</h2>
-		<p>Everything Venom, from event dates and photos to gear for sale and other cool stuff.</p>
-
-		<h3>Upcoming Shows:</h3>
-		<br />
-		<img class="wide" src="./images/content/event/venomrox_mardigras_garage.jpg" />
+		<main class="home hidden">
+			<img class="logo" src="./images/brand/venom-logo.svg" />
+			<h3>Welcome to venomrox.com!</h3>
+			<p>Venom is the Gulf Coast's premier rock band, playing arena hits, ballads, and more from the 80's, 90's and
+				beyond.</p>
+			<p>We have everything Venom, from event dates and photos to gear for sale and other cool stuff.</p>
+		</main>
 		
-	</div>
-
-	<div route="photos" class="content hidden">
-		<h2>Photos</h2>
-		<ul class="photos">
-			<li>
-				<img src="./images/content/image.001.jpg" />
-			</li>
-			<li>
-				<img src="./images/content/photo.001.jpg" />
-			</li>
-			<li>
-				<img src="./images/content/photo.002.jpg" />
-			</li>
-			<li>
-				<img src="./images/content/photo.003.jpg" />
-			</li>
-			<li>
-				<img src="./images/content/photo.004.jpg" />
-			</li>
-			<li>
-				<img src="./images/content/photo.005.jpg" />
-			</li>
-			<li>
-				<img src="./images/content/photo.006.jpg" />
-			</li>
-			<li>
-				<img src="./images/content/photo.007.jpg" />
-			</li>
-			<li>
-				<img src="./images/content/photo.008.jpg" />
-			</li>
-			<li class="wide">
-				<img src="./images/content/photo.012.jpg" />
-			</li>
-			<li class="wide">
-				<img src="./images/content/photo.013.jpg" />
-			</li>
-			<li class="wide">
-				<img src="./images/content/photo.011.jpg" />
-			</li>
-			<li class="wide">
-				<img src="./images/content/photo.010.jpg" />
-			</li>
-			<li>
-				<img src="./images/content/photo.009.jpg" />
-			</li>
-			<li>
-				<img src="./images/content/photo.014.jpg" />
-			</li>
-			<li class="wide">
-				<img src="./images/content/photo.015.jpg" />
-			</li>
-			<li class="wide">
-				<img src="./images/content/photo.016.jpg" />
-			</li>
-			<li class="wide">
-				<img src="./images/content/photo.017.jpg" />
-			</li>
-			<li class="wide">
-				<img src="./images/content/photo.018.jpg" />
-			</li>
-			<li>
-				<img src="./images/content/photo.019.jpg" />
-			</li>
-			<li>
-				<img src="./images/content/photo.021.jpg" />
-			</li>
-			<li class="wide">
-				<img src="./images/content/photo.020.jpg" />
-			</li>
-		</ul>
-	</div>
-
-	<div route="events" class="content hidden events">
-		<h2>Events</h2>
-
-		<!--<h3>June 2nd</h3>
-		<p>Stock up on hairspray!</p>
-
-		<h3>June 4th</h3>
-		<p>O'Daly's Irish Pub</p>
-
-		<h3>June 14th</h3>
-		<p>Restring guitars and eat PB&J</p>
-
-		<h3>Sept 3</h3>
-		<p>Pirate's Pleasure Dauphin Island</p>-->
-
-		<!-- <h3>Saturday, March 25 - 9PM</h3>
-		<p>Strick's Place, Fairhope AL</p>
-
-		<h3>Friday, May 12 - 7PM</h3>
-		<p>The Awesome 80's Prom</p> -->
-
-		<!-- <h3>Saturday Sept 29 @10PM</h3>
-		<p>Top Of The Bay - Hwy 98 Daphne AL</p>
-		<img src="./images/content/event/venomrox_topofthebay.jpg" /> -->
-
-		<p>Mardi Gras @ The Garage - Mobile, AL - Saturday, Feb. 15 (after the parade)</p>
-		<img src="./images/content/event/venomrox_mardigras_garage.jpg" />
-		<br />
-
-		<p>Strick's Place - Fairhope, AL - Friday, March 27 @9PM</p>
-		<img src="./images/content/event/venomrox_stricks.jpg" />
-		<br />
-
-		<p>Coconutz - Playas del Coco, Costa Rica - April 23, 24, & 25 @8PM</p>
-		<img src="./images/content/event/venomrox_coconutz.jpg" />
-		<br />
+		<main class="merch hidden">
 		
-<!-- 
-		<p>Angry Goats Brewing - </p>
-		<img class="wide" src="./images/content/event/venomrox_angrygoats.jpg" /> -->
+			<h2>Venom Gear</h2>
+			<p>Get your Venom gear right here! Use the order form below purchase hats, shirts, sticks, and other cool items.</p>
+		
+			<div class="orderSheet">
+		
+			</div>
+		
+			<div class="viewcart">
+				<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+					<!-- Identify your business so that you can collect the payments. -->
+					<input type="hidden" name="business" value="orders@venomrox.com">
+		
+					<!-- Specify a PayPal Shopping Cart View Cart button. -->
+					<input type="hidden" name="cmd" value="_cart">
+					<input type="hidden" name="display" value="1">
+		
+					<!-- Display the View Cart button. -->
+					<input type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_viewcart_LG.gif"
+						alt="PayPal - The safer, easier way to pay online">
+					<img alt="" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif">
+				</form>
+			</div>
+		
+			<div class="hidden" id="templates">
+		
+				<ul id="itemTemplateUL">
+					<li item="">
+		
+						<input class="hidden itemCode" />
+		
+						<div class="name">
+							<span></span>
+						</div>
+		
+						<div class="description">
+		
+							<span></span>
+						</div>
+		
+						<div class="size hidden">
+							<label class="size">Size:</label>
+							<button class="hidden" value="S">S</button>
+							<button class="hidden" value="M">M</button>
+							<button class="hidden" value="L">L</button>
+							<button class="hidden" value="XL">XL</button>
+							<button class="hidden" value="XXL">XXL</button>
+						</div>
+		
+						<div class="color hidden">
+							<label class="color">Color:</label>
+						</div>
+		
+						<div class="price">
+							<label>Price:</label>
+							<span></span>
+						</div>
+		
+						<div class="qty hidden">
+							<label>Qty:</label>
+							<button value="minus">-</button>
+							<span class="qty" value="0">0</span>
+							<button value="plus">+</button>
+						</div>
+		
+						<div class="total hidden">
+							<label>Total</label>
+							<span></span>
+						</div>
+					</li>
+				</ul>
+		
+				<div id="paypalform">
+					<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+						<input type="hidden" name="cmd" value="_s-xclick">
+						<input type="hidden" name="hosted_button_id" value="7QWD3DENXDT66">
+						<table class="hidden">
+							<tr>
+								<td><input type="hidden" name="on0" value="Size">Size</td>
+							</tr>
+							<tr>
+								<td>
+									<select name="os0">
+										<option value="S">S </option>
+										<option value="M">M </option>
+										<option value="L" selected>L </option>
+										<option value="XL">XL </option>
+										<option value="XXL">XXL </option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td><input type="hidden" name="on1" value="Color">Color</td>
+							</tr>
+							<tr>
+								<td>
+									<select name="os1">
+										<option value="Black" selected>Black </option>
+										<option value="Grey">Grey </option>
+										<option value="White">White </option>
+										<option value="LightPink">LightPink </option>
+										<option value="DarkPink">DarkPink </option>
+										<option value="Teal">Teal </option>
+										<option value="Purple">Purple </option>
+									</select>
+								</td>
+							</tr>
+						</table>
+						<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" name="submit"
+							alt="PayPal - The safer, easier way to pay online!">
+						<img alt="" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+					</form>
+				</div>
+		
+		
+				<img class="merch" category="Hats" src="./images/merch/general/merch.hats.001.jpg" />
+				<img class="merch" category="Shirts" src="./images/merch/general/merch.shirts.001.jpg" />
+				<img class="merch" category="Accessories" src="./images/merch/general/merch.accessories.001.jpg" />
+		
+		</main>
+		
+		<main class="events hidden">
+			<!-- <img class="logo" src="./images/brand/venom-logo.svg" /> -->
+			<h2>Events</h2>
+
+			<h4>5.15.2021</h4>
+			<p>Stay tuned!</p>
+			<br />
+
+			<h4>6.18.2021</h4>
+			<p>Stay tuned!</p>
+			<br />
+
+			<h4>6.25.2021</h4>
+			<p>Stay tuned!</p>
+			<br />
+
+			<h4>8.21.2021</h4>
+			<p>Stay tuned!</p>
+			<br />
+
+			<h4>8.31.2021</h4>
+			<p>Stay tuned!</p>
+			<br />
+
+		</main>
+
+		<main class="game hidden">
+			<!-- <h2>Venomites</h2> -->
+			<h2 id='score'>score: 0</h2>
+			<canvas></canvas>
+			<p>tap to start & jump, swipe to turn</p>
+		</main>
+
+		<aside></aside>
 	</div>
 
-	<div route="gear" class="content hidden">
-
-		<h2>Venom Gear</h2>
-
-		<p>Get your Venom gear right here! Use the order form below purchase hats, shirts, sticks, and other cool items.</p>
-
-
-		<div class="orderSheet">
-
-		</div>
-
-		<div class="viewcart">
-			<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-				<!-- Identify your business so that you can collect the payments. -->
-				<input type="hidden" name="business" value="orders@venomrox.com">
-
-				<!-- Specify a PayPal Shopping Cart View Cart button. -->
-				<input type="hidden" name="cmd" value="_cart">
-				<input type="hidden" name="display" value="1">
-
-				<!-- Display the View Cart button. -->
-				<input type="image" name="submit"
-					   src="https://www.paypalobjects.com/en_US/i/btn/btn_viewcart_LG.gif"
-					   alt="PayPal - The safer, easier way to pay online">
-				<img alt="" width="1" height="1"
-					 src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif">
-			</form>
-		</div>
-	</div>
-
-	<div class="hidden" id="templates">
-
-		<ul id="itemTemplateUL">
-			<li item="">
-
-				<input class="hidden itemCode" />
-
-				<div class="name">
-					<span></span>
-				</div>
-
-				<div class="description">
-
-					<span></span>
-				</div>
-
-				<div class="size hidden">
-					<label class="size">Size:</label>
-					<button class="hidden" value="S">S</button>
-					<button class="hidden" value="M">M</button>
-					<button class="hidden" value="L">L</button>
-					<button class="hidden" value="XL">XL</button>
-					<button class="hidden" value="XXL">XXL</button>
-				</div>
-
-				<div class="color hidden">
-					<label class="color">Color:</label>
-				</div>
-
-				<div class="price">
-					<label>Price:</label>
-					<span></span>
-				</div>
-
-				<div class="qty hidden">
-					<label>Qty:</label>
-					<button value="minus">-</button>
-					<span class="qty" value="0">0</span>
-					<button value="plus">+</button>
-				</div>
-
-				<div class="total hidden">
-					<label>Total</label>
-					<span></span>
-				</div>
-			</li>
-		</ul>
-
-		<div id="paypalform">
-			<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-				<input type="hidden" name="cmd" value="_s-xclick">
-				<input type="hidden" name="hosted_button_id" value="7QWD3DENXDT66">
-				<table class="hidden">
-					<tr><td><input type="hidden" name="on0" value="Size">Size</td></tr>
-					<tr>
-						<td>
-							<select name="os0">
-								<option value="S">S </option>
-								<option value="M">M </option>
-								<option value="L" selected>L </option>
-								<option value="XL">XL </option>
-								<option value="XXL">XXL </option>
-							</select>
-						</td>
-					</tr>
-					<tr><td><input type="hidden" name="on1" value="Color">Color</td></tr>
-					<tr>
-						<td>
-							<select name="os1">
-								<option value="Black" selected>Black </option>
-								<option value="Grey">Grey </option>
-								<option value="White">White </option>
-								<option value="LightPink">LightPink </option>
-								<option value="DarkPink">DarkPink </option>
-								<option value="Teal">Teal </option>
-								<option value="Purple">Purple </option>
-							</select>
-						</td>
-					</tr>
-				</table>
-				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-			</form>
-		</div>
-	
-
-		<img class="merch" category="Hats" src="./images/merch/general/merch.hats.001.jpg" />
-		<img class="merch" category="Shirts" src="./images/merch/general/merch.shirts.001.jpg" />
-		<img class="merch" category="Accessories" src="./images/merch/general/merch.accessories.001.jpg" />
-	</div>
-
-	<script src="./tools/analytics.js"></script>
-	<script src="./ts/venom.js"></script>
-	<script type="text/javascript">Venom.MainPage.Init()</script>
+	<!-- <script async src="./tools/analytics.js"></script> -->
+	<script async type="module" src="./js/venom.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,71 @@
+@import url('./vars.css');
+
+@keyframes blink {
+    from, to { color: var(--color-bassamp-leds); }
+    50% { color: black; }
+}
+
+@keyframes fall {
+    0% { transform: auto; }
+    100% { transform: translateY(200vh); }
+}
+
+@keyframes skewers {
+    0% {
+        opacity: 0;
+        transform: translateX(-100vw) skew(calc(var(--π) / -2 * 1rad));
+    }
+    60% {
+        transform: translateX(0) skew(0);
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes crt-collapse {
+    from {
+        opacity: 1;
+        transform: auto;
+    }
+    to {
+        opacity: 0;
+        transform: scaleX(2) rotateX(90deg);
+        /* transform: translateZ(40vw) rotateX(40deg); */
+    }
+}
+
+@keyframes slide-in-left {
+    
+    from {
+        opacity: 0;
+        transform: translateX(-100vw) skew(calc(var(--π) / -2 * 1rad));
+    }
+    to {
+        opacity: 1;
+        transform: auto;
+    }
+}
+
+@keyframes slide-in-right {
+    
+    from {
+        opacity: 0;
+        transform: translateX(100vw) skew(calc(var(--π) / -2 * 1rad));
+    }
+    to {
+        opacity: 1;
+        transform: auto;
+    }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes v-expand {
+    from { opacity: 0; transform: scaleY(.1); }
+    to { opacity: 1; transform: auto; }
+}

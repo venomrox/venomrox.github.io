@@ -1,0 +1,25 @@
+:root {
+	--π: 3.14;
+	--color-black: #050a0e;
+	--color-white: #e9f7f0;
+
+	--color-curtain-dark: #050b1c; /* curtain dark */
+	--color-curtain-lite: #000062; /* curtain reflect */
+	--color-stage-drkblu: #060056; /* stage dark area */
+	--color-truss-drkblu: #0800b1; /* truss base glow blue */
+	--color-bcab-reflect: #0e00d7;
+	--color-stage-mdblue: #0f00ff; /* average stage blue */
+	--color-truss-drkred: #644562;
+	--color-stand-rflect: #9c5cfd; /* drum stuff relfect */
+	--color-truss-rflect: #ccb4ff; /* truss reflect pink */
+	--color-bassamp-leds: #dfa8ff; /* bass amp power LED */
+	--color-stage-ltblue: #26eeff; /* stage corner reflect */
+	--color-cone-reflect: #4bffff; /* speaker cone reflect */
+	--color-rack-reflect: #0fefff; /* drum rack reflect */
+	--color-stage-tape-1: #00e8ff; 
+	--color-stage-tape-2: #00e752; /* cabinet tape stage L */
+	--color-stage-tape-3: #0fff00; /* stage L */
+	--color-venom-lgreen: #00C43A; 
+
+	--skewer-delay-factor: 180ms;
+}
