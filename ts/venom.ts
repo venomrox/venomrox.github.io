@@ -108,8 +108,8 @@ namespace Venom {
             document.querySelector("header").classList.add('fade-in')
 
             var menubuttons = document.querySelectorAll('nav > button:not(.menu-v)')
-            menubuttons.forEach((button: HTMLButtonElement) => {
-                button.onclick = MainPage.onClickMenuOption.bind(MainPage, button)
+            menubuttons.forEach((button) => {
+                (<HTMLButtonElement>button).onclick = MainPage.onClickMenuOption.bind(MainPage, button)
             });
         }
 

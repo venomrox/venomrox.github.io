@@ -21,15 +21,18 @@ export class Game {
         
         Game.canvas_el = document.querySelector("canvas")
         Game.body_el = document.querySelector("body")
-        
-        // body.onkeyup = Controls.on_key_up              
-
     }
 
     static on_tap(ev: Event) {
 
-        if (!Game.is_running) { 
-            document.documentElement.requestFullscreen().then(() => Game.start())
+        if (!Game.is_running) {
+            try {
+                document.documentElement.requestFullscreen().then(() => Game.start())
+            }
+            catch (e) {
+                Game.start()
+            }
+            
         }
         else { Controls.on_tap(ev) }
     }
@@ -47,6 +50,7 @@ export class Game {
         Game.player_one = new Snake({ X: 0, Y: 0 })        
         Game.player_one.direction = Direction.RIGHT
 
+        document.onkeyup = Controls.on_key_up
         Game.body_el.ontouchstart = Controls.on_touch_start
         Game.body_el.ontouchend = Controls.on_touch_end
         Game.body_el.onclick = Game.on_tap
@@ -59,6 +63,7 @@ export class Game {
 
     static power_off() {
 
+        document.onkeyup = () => {}
         Game.body_el.ontouchstart = () => null
         Game.body_el.ontouchend = () => null
         Game.body_el.onclick = () => null

@@ -13,7 +13,7 @@
 @keyframes skewers {
     0% {
         opacity: 0;
-        transform: translateX(-100vw) skew(calc(var(--π) / -2 * 1rad));
+        transform: translateX(-100vw) skew(20deg);
     }
     60% {
         transform: translateX(0) skew(0);
@@ -40,7 +40,7 @@
     
     from {
         opacity: 0;
-        transform: translateX(-100vw) skew(calc(var(--π) / -2 * 1rad));
+        transform: translateX(-100vw) skew(20deg);
     }
     to {
         opacity: 1;
@@ -52,7 +52,7 @@
     
     from {
         opacity: 0;
-        transform: translateX(100vw) skew(calc(var(--π) / -2 * 1rad));
+        transform: translateX(100vw) skew(20deg);
     }
     to {
         opacity: 1;
