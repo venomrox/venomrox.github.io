@@ -27,12 +27,41 @@ export class Controls {
             : ((dy > 0) ? Input.DOWN : Input.UP)
     }
 
-    static on_tap = (ev: Event) => { Controls.jump = true }
+    static on_tap = (ev: Event) => { 
+
+        Controls.jump = true 
+        ev.cancelBubble = true
+    }
+
+    static on_key_up = (ev: KeyboardEvent) => {
+
+        switch(ev.keyCode) {
+
+            case GameKey.UP:
+                return (Controls.parsed_direction = Input.UP)
+
+            case GameKey.DOWN:
+                return (Controls.parsed_direction = Input.DOWN)
+
+            case GameKey.LEFT:
+                return (Controls.parsed_direction = Input.LEFT)
+
+            case GameKey.RIGHT:
+                return (Controls.parsed_direction = Input.RIGHT)
+            
+            case GameKey.JUMP:
+                return (Controls.jump = true)
+        }
+    }
 
     static process_input() {
 
-        if (!Controls.parsed_direction) { return }
+        if (Controls.jump) { 
+            Controls.jump = null
+            return Game.player_one.jump()
+        }
 
+        if (Controls.parsed_direction == Input.NONE) { return }
         switch (Controls.parsed_direction) {
 
             case Input.DOWN:
@@ -60,9 +89,6 @@ export class Controls {
                 break
         }
 
-        if (Controls.jump) { Game.player_one.jump() }
-
-        Controls.parsed_direction = null
-        Controls.jump = null
+        Controls.parsed_direction = Input.NONE
     }
 }

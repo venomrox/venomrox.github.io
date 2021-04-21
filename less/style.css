@@ -62,7 +62,8 @@ body {
         transparent 6%, 
         var(--color-curtain-lite) 12%, 
         var(--color-curtain-dark) 20%);
-    transform: rotateX(3deg) translateZ(2vh);
+    opacity: 0.6;
+    /* transform: rotateX(3deg) translateZ(2vh); */
 }
 
 .curtain div:nth-child(2) {
@@ -300,6 +301,22 @@ main {
     overscroll-behavior: contain;
 }
 
+main.home > div {
+    display: flex;
+    max-width: 60vh;
+    width: 100vw;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+
+}
+
+main.home > div > img {
+    margin: 1vh 0;
+    flex: 1;
+    width: 100%;
+}
+
 h2 {
     text-transform: uppercase;
     font-weight: 200;
@@ -320,13 +337,14 @@ main h3 {
 }
 p {
     color: var(--color-stage-tape-1);
-    padding: 0 12%;
+    padding: 0 10%;
     font-size: 1.1em;
 }
 
 main img.logo {
     width: 44vw;
     flex: .32;
+    padding-top: 12vw;
 }
 
 ul {
@@ -425,9 +443,7 @@ div.gearphotos {
 div.gearphotos img {
     max-height: 200px;
 }
-img {
-    max-width: 380px;
-}
+
 button.order {
     width: 200px;
     padding: 20px;

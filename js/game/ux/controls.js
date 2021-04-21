@@ -1,4 +1,4 @@
-import { Direction } from '../types/index.js';
+import { Direction, GameKey } from '../types/index.js';
 import { Game } from '../game.js';
 export var Input;
 (function (Input) {
@@ -10,7 +10,11 @@ export var Input;
 })(Input || (Input = {}));
 export class Controls {
     static process_input() {
-        if (!Controls.parsed_direction) {
+        if (Controls.jump) {
+            Controls.jump = null;
+            return Game.player_one.jump();
+        }
+        if (Controls.parsed_direction == Input.NONE) {
             return;
         }
         switch (Controls.parsed_direction) {
@@ -35,11 +39,7 @@ export class Controls {
                 }
                 break;
         }
-        if (Controls.jump) {
-            Game.player_one.jump();
-        }
-        Controls.parsed_direction = null;
-        Controls.jump = null;
+        Controls.parsed_direction = Input.NONE;
     }
 }
 Controls.parsed_direction = Input.NONE;
@@ -57,5 +57,22 @@ Controls.on_touch_end = (ev) => {
         ? ((dx > 0) ? Input.RIGHT : Input.LEFT)
         : ((dy > 0) ? Input.DOWN : Input.UP);
 };
-Controls.on_tap = (ev) => { Controls.jump = true; };
+Controls.on_tap = (ev) => {
+    Controls.jump = true;
+    ev.cancelBubble = true;
+};
+Controls.on_key_up = (ev) => {
+    switch (ev.keyCode) {
+        case GameKey.UP:
+            return (Controls.parsed_direction = Input.UP);
+        case GameKey.DOWN:
+            return (Controls.parsed_direction = Input.DOWN);
+        case GameKey.LEFT:
+            return (Controls.parsed_direction = Input.LEFT);
+        case GameKey.RIGHT:
+            return (Controls.parsed_direction = Input.RIGHT);
+        case GameKey.JUMP:
+            return (Controls.jump = true);
+    }
+};
 //# sourceMappingURL=controls.js.map
