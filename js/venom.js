@@ -63,6 +63,12 @@ var Venom;
             menubuttons.forEach((button) => {
                 button.onclick = MainPage.onClickMenuOption.bind(MainPage, button);
             });
+            if (!navigator.serviceWorker)
+                return;
+            try {
+                navigator.serviceWorker.register('js/worker.js', { scope: '/js/' });
+            }
+            catch (e) { }
         }
         static onclickMenu(event) {
             if (MainPage.nav.classList.contains('open')) {
