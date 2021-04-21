@@ -42,7 +42,7 @@ body {
     overscroll-behavior: contain;
     overflow: hidden;
     perspective: 20vh;
-    position: absolute;
+    position: fixed;
     height: 100vh;
     width: 100vw;
     z-index: -1;
@@ -51,7 +51,7 @@ body {
 .curtain div {
 
     overscroll-behavior: contain;
-    position: absolute;
+    position: fixed;
     height: 100vh;
     width: 100vw;
     background: radial-gradient(var(--color-curtain-dark), var(--color-curtain-lite));
@@ -287,7 +287,7 @@ div.content > aside {
     height: 24vh;
     width: 100vw;
     bottom: 0;
-    position: absolute;
+    position: fixed;
     background: linear-gradient(transparent, #000000a0 60%);
 }
 
@@ -297,7 +297,6 @@ main {
     flex-flow: column nowrap;
     align-items: center;
     justify-content: flex-start;
-
     overscroll-behavior: contain;
 }
 
