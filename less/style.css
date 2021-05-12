@@ -456,12 +456,24 @@ button.order {
     margin: 30px;
 }
 
+.events {
+    padding-bottom: 15%;
+}
+
+.events h2 {
+    margin-bottom: 3vh;
+}
+
 .events h4 {
-    margin: 2% 0;
+    margin: 1% 0 0 0;
+    font-size: 1.3em;
+    color: var(--color-bassamp-leds);
+    text-shadow: 1px 1px 1px grey;
 }
 
 .events p {
-    margin: 1% 0;
+    margin: 0;
+    font-size: 1.2em;
 }
 
 main.game:not(.hidden) {
